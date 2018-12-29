@@ -67,6 +67,7 @@ export class Counter extends React.PureComponent<Props> {
     return (
       <View style={style.counterContainer}>
         <FlatList
+          removeClippedSubviews={true}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           ref={this.createRef}
@@ -88,7 +89,7 @@ const style = StyleSheet.create({
   },
   numberContainer: {
     backgroundColor: 'green',
-    height: 48,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
   },
