@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, StyleSheet, TouchableOpacity, Image, Text} from 'react-native';
+import {View, Button, TouchableOpacity, Image} from 'react-native';
 import {inject, bind, injectedProperty} from 'dependency-injector';
 import {HomePresenter} from "../../Presenter/HomePresenter";
 import {HomeView} from "../../View/HomeView";
@@ -7,12 +7,11 @@ import BaseComponent from "../../Reducer/BaseComponent";
 import {PROFILE} from "../../Navigation/routeName";
 import {style} from "./style";
 import {ReloadButton} from "../../Component/ReloadButton";
+import {Counter} from "../../Component/Counter";
 
 export default class Home extends BaseComponent implements HomeView {
 
-  state = {
-    number: 0
-  };
+  counter!: Counter;
 
   @inject
   presenter!: HomePresenter;
@@ -32,23 +31,38 @@ export default class Home extends BaseComponent implements HomeView {
   };
 
   @bind
+  createRef(node: Counter) {
+    this.counter = node;
+  }
+
+  @bind
   increase() {
-    this.setState({number: this.state.number + 1});
+    this.counter.increase();
+  }
+
+  @bind
+  decrease() {
+    this.counter.decrease();
   }
 
   @bind
   reset() {
-    this.setState({number: 0});
+    this.counter.reset();
   }
 
   render() {
     return (
       <View style={style.container}>
-        <Text style={style.number}>{this.state.number}</Text>
+        <Counter ref={this.createRef} />
         <Button color={'white'} title={'Open profile'} onPress={this.presenter.handleOnPress} />
-        <TouchableOpacity style={style.appendButton} onPress={this.increase}>
-          <Image style={style.button} source={{uri: 'ic_plus'}} />
-        </TouchableOpacity>
+        <View style={style.buttonsContainer}>
+          <TouchableOpacity style={style.decreaseButton} onPress={this.decrease}>
+            <Image style={style.button} source={{uri: 'ic_minus'}} />
+          </TouchableOpacity>
+          <TouchableOpacity style={style.increaseButton} onPress={this.increase}>
+            <Image style={style.button} source={{uri: 'ic_plus'}} />
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }

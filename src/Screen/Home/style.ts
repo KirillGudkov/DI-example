@@ -7,17 +7,13 @@ export const style = StyleSheet.create({
     backgroundColor: '#f66b69',
     justifyContent: 'space-around'
   },
-  number: {
-    fontSize: 42,
-    color: 'white',
-    fontWeight: '200',
-  },
   button: {
     width: 40,
     height: 40,
   },
-  appendButton: {
+  increaseButton: {
     top: 50,
+    left: 8,
     width: 40,
     height: 40,
     borderRadius: 20,
@@ -26,4 +22,18 @@ export const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  decreaseButton: {
+    top: 50,
+    right: 8,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+  }
 });
