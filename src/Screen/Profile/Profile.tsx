@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {View, Button} from 'react-native';
+import {bind, inject, injectedProperty} from 'dependency-injector';
 import {ProfilePresenter} from "../../Presenter/ProfilePresenter";
 import {ProfileView} from "../../View/ProfileView";
-import {bind, inject, injectedProperty} from 'dependency-injector';
-import BaseComponent from "../../Reducer/BaseComponent";
-import {HOME} from "../../Navigation/routeName";
+import BaseComponent from "../../Component/BaseComponent";
+import {style} from './style';
 
 export default class Profile extends BaseComponent implements ProfileView {
 
@@ -25,7 +25,3 @@ export default class Profile extends BaseComponent implements ProfileView {
     )
   }
 }
-
-const style = StyleSheet.create({
-  container: {flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#66a1da'}
-});

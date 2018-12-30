@@ -2,7 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View, FlatList} from "react-native";
 import {bind} from 'dependency-injector';
 
-interface Props {}
+interface Props {
+  initialScrollIndex: number
+  range: Array<number>
+}
 
 interface Item {
   item: number,
@@ -13,39 +16,52 @@ export class Counter extends React.PureComponent<Props> {
 
   counter!: FlatList<number>;
 
+  current!: number;
+
   state = {
     items: [0]
   };
 
+  constructor(props: Props) {
+    super(props);
+
+    const items = [];
+
+    if (props.range.length > 1) {
+      for (let i = props.range[0]; i <= props.range[1]; i++) {
+        items.push(i);
+      }
+    } else {
+      items.push(0);
+    }
+    this.current = items.indexOf(props.initialScrollIndex) || 0;
+
+    this.state.items = items;
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.counter.scrollToItem({animated: true, item: this.state.items.indexOf(this.props.initialScrollIndex)});
+    }, 390);
+  }
+
   public increase(): void {
-    const {items} = this.state;
-    items.push(items[items.length - 1] + 1);
-    this.setState({items: items}, () => this.scrollToNext());
+    if (this.current < this.state.items.indexOf(this.state.items[this.state.items.length - 1])) {
+      this.current += 1;
+      this.counter.scrollToItem({animated: true, item: this.current});
+    }
   }
 
   public decrease(): void {
-    const {items} = this.state;
-    if (items.length > 1) {
-      items.pop();
-      this.setState({items: items}, () => this.scrollToPrev(items));
+    if (this.current > this.state.items.indexOf(this.state.items[0])){
+      this.current -= 1;
+      this.counter.scrollToItem({animated: true, item: this.current});
     }
   }
 
   public reset(): void {
+    this.current = 0;
     this.counter.scrollToItem({animated: true, item: 0});
-    setTimeout(() => this.setState({items: [0]}), 250);
-  }
-
-  private scrollToNext(): void {
-    this.counter.scrollToEnd({animated: true});
-  }
-
-  private scrollToPrev(items: Array<number>): void {
-    if (items.length > 1) {
-      this.counter.scrollToItem({animated: true, item: items.length - 1});
-    } else {
-      this.counter.scrollToItem({animated: true, item: 0});
-    }
   }
 
   @bind
@@ -67,15 +83,14 @@ export class Counter extends React.PureComponent<Props> {
     return (
       <View style={style.counterContainer}>
         <FlatList
-          removeClippedSubviews={true}
+          onScrollToIndexFailed={() => null}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderItem}
           ref={this.createRef}
           contentContainerStyle={style.counterListContainerStyle}
           style={style.counterList}
           data={this.state.items}
-          scrollEnabled={false}
-          bounces={false} />
+          scrollEnabled={false} />
       </View>
     )
   }
@@ -83,23 +98,23 @@ export class Counter extends React.PureComponent<Props> {
 
 const style = StyleSheet.create({
   number: {
-    fontSize: 42,
+    fontSize: 72,
     color: 'white',
     fontWeight: '200',
   },
   numberContainer: {
     backgroundColor: 'green',
-    height: 50,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
   counterContainer: {
-    height: 50,
-    width: 50
+    height: 100,
+    width: 100
   },
   counterList: {
-    height: 50,
-    width: 50
+    height: 100,
+    width: 100
   },
   counterListContainerStyle: {
     alignItems: 'center'

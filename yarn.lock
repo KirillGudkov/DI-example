@@ -1804,9 +1804,9 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-"dependency-injector@github:KirillGudkov/dependency-injector#master":
+"dependency-injector@github:KirillGudkov/presenter-injection#master":
   version "0.0.1"
-  resolved "https://codeload.github.com/KirillGudkov/dependency-injector/tar.gz/56e76e11e1997dd2bedf48aa192c29116744bd86"
+  resolved "https://codeload.github.com/KirillGudkov/presenter-injection/tar.gz/a7812c4b13a086a0d52d2cdfe3c8d160f5fe3348"
 
 destroy@~1.0.4:
   version "1.0.4"

@@ -1,9 +1,9 @@
 import * as screens from './routeName';
-import {createStackNavigator, createNavigationContainer} from 'react-navigation';
+import {createStackNavigator, createNavigationContainer, NavigationContainer} from 'react-navigation';
 import Home from "../Screen/Home/Home";
 import Profile from "../Screen/Profile/Profile";
 
-const Navigator = createStackNavigator(
+const Navigator: NavigationContainer = createStackNavigator(
   {
     [screens.HOME]: {
       screen: Home,
@@ -19,4 +19,4 @@ const Navigator = createStackNavigator(
     }
   }
 );
-export const AppNavigator = createNavigationContainer(Navigator);
+export const AppNavigator: NavigationContainer = createNavigationContainer(Navigator);

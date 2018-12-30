@@ -1,13 +1,7 @@
+import {bind, Presenter} from "dependency-injector";
 import {ProfileView} from "../View/ProfileView";
-import {bind} from "dependency-injector";
 
-export class ProfilePresenter {
-
-  view: ProfileView;
-
-  constructor(view: ProfileView) {
-    this.view = view;
-  }
+export class ProfilePresenter extends Presenter<ProfileView> {
 
   @bind
   handleOnPress() {

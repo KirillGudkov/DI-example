@@ -4,7 +4,7 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#f66b69',
-    justifyContent: 'space-around'
-  },
+    justifyContent: 'center',
+    backgroundColor: '#66a1da'
+  }
 });
