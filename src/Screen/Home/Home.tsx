@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button} from 'react-native';
+import {View} from 'react-native';
 import {HomePresenter} from "../../Presenter/HomePresenter";
 import {bind, inject, viewProperty} from "presenter-injection";
 import BaseComponent from "../../Component/BaseComponent";
@@ -7,6 +7,7 @@ import {PROFILE} from "../../Navigation/routeName";
 import {HomeView} from "../../View/HomeView";
 import {style} from "./style";
 import {connect} from "react-redux";
+import IOSButton from "../../Component/iOSButton/IOSButton";
 
 class Home extends BaseComponent implements HomeView {
 
@@ -28,8 +29,10 @@ class Home extends BaseComponent implements HomeView {
   render() {
     return (
       <View style={style.container}>
-        <Button color={'white'} title={'Open profile'} onPress={this.presenter.handleOnPress} />
-        <Button color={'white'} title={'Say hi'} onPress={this.presenter.sayHi} />
+        <IOSButton filled tintColor={'#007aff'} title={'Open profile'} onPress={this.presenter.handleOnPress} />
+        <View style={style.hiWrapper}>
+          <IOSButton tintColor={'#007aff'} title={'Say hi'} onPress={this.presenter.sayHi} />
+        </View>
       </View>
     )
   }
