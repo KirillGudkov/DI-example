@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Button} from 'react-native';
 import {HomePresenter} from "../../Presenter/HomePresenter";
-import {HomeView} from "../../View/HomeView";
+import {bind, inject, injectedProperty} from "presenter-injection";
 import BaseComponent from "../../Component/BaseComponent";
 import {PROFILE} from "../../Navigation/routeName";
+import {HomeView} from "../../View/HomeView";
 import {style} from "./style";
-import {inject, bind, injectedProperty} from 'dependency-injector';
 
 export default class Home extends BaseComponent implements HomeView {
 
@@ -14,7 +14,7 @@ export default class Home extends BaseComponent implements HomeView {
 
   @bind
   @injectedProperty
-  toProfile(): void {
+  public toProfile(): void {
     this.props.navigation.navigate(PROFILE)
   }
 

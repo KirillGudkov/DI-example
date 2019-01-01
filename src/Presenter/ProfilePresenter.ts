@@ -1,5 +1,5 @@
-import {bind, Presenter} from "dependency-injector";
 import {ProfileView} from "../View/ProfileView";
+import {Presenter, bind} from "presenter-injection";
 
 export class ProfilePresenter extends Presenter<ProfileView> {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, FlatList} from "react-native";
-import {bind} from 'dependency-injector';
+import {bind} from "presenter-injection";
 
 interface Props {
   initialScrollIndex: number

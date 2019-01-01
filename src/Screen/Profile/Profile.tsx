@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Button} from 'react-native';
-import {bind, inject, injectedProperty} from 'dependency-injector';
 import {ProfilePresenter} from "../../Presenter/ProfilePresenter";
 import {ProfileView} from "../../View/ProfileView";
 import BaseComponent from "../../Component/BaseComponent";
 import {style} from './style';
+import {bind, inject, injectedProperty} from "presenter-injection";
 
 export default class Profile extends BaseComponent implements ProfileView {
 
