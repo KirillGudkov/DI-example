@@ -4,8 +4,8 @@ import {ProfilePresenter} from "../../Presenter/ProfilePresenter";
 import {ProfileView} from "../../View/ProfileView";
 import BaseComponent from "../../Component/BaseComponent";
 import {style} from './style';
-import {bind, inject, viewProperty} from "presenter-injection";
 import IOSButton from "../../Component/iOSButton/IOSButton";
+import {bind, inject, viewProperty} from "mvp-di";
 
 export default class Profile extends BaseComponent implements ProfileView {
 

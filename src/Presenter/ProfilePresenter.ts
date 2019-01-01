@@ -1,5 +1,5 @@
 import {ProfileView} from "../View/ProfileView";
-import {Presenter, bind} from "presenter-injection";
+import {bind, Presenter} from "mvp-di";
 
 export class ProfilePresenter extends Presenter<ProfileView> {
 

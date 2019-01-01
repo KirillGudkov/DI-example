@@ -1,13 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
 import {HomePresenter} from "../../Presenter/HomePresenter";
-import {bind, inject, viewProperty} from "presenter-injection";
 import BaseComponent from "../../Component/BaseComponent";
 import {PROFILE} from "../../Navigation/routeName";
 import {HomeView} from "../../View/HomeView";
 import {style} from "./style";
 import {connect} from "react-redux";
 import IOSButton from "../../Component/iOSButton/IOSButton";
+import {bind, inject, viewProperty} from "mvp-di";
 
 class Home extends BaseComponent implements HomeView {
 

@@ -1,6 +1,6 @@
 import {HomeView} from "../View/HomeView";
-import {bind, Presenter} from "presenter-injection";
 import {log} from "../Action/Actions";
+import {bind, Presenter} from "mvp-di";
 
 export class HomePresenter extends Presenter<HomeView>{
 

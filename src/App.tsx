@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {store} from "./Config/reduxStoreConfig";
 import {AppNavigator} from "./Navigation/router";
 import DITypes from "./Config/DITypes";
-import {DIBuilder} from "presenter-injection";
+import {DIBuilder} from "mvp-di";
 
 DIBuilder.build(DITypes);
 
