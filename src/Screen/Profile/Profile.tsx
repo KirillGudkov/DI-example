@@ -4,7 +4,7 @@ import {ProfilePresenter} from "../../Presenter/ProfilePresenter";
 import {ProfileView} from "../../View/ProfileView";
 import BaseComponent from "../../Component/BaseComponent";
 import {style} from './style';
-import {bind, inject, injectedProperty} from "presenter-injection";
+import {bind, inject, viewProperty} from "presenter-injection";
 
 export default class Profile extends BaseComponent implements ProfileView {
 
@@ -12,7 +12,7 @@ export default class Profile extends BaseComponent implements ProfileView {
   presenter!: ProfilePresenter;
 
   @bind
-  @injectedProperty
+  @viewProperty
   goBack() {
     this.props.navigation.goBack()
   }

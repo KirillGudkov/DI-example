@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface Props {
+  dispatch: Function,
   navigation: {
     navigate: Function,
     goBack: Function,

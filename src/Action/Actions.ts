@@ -3,7 +3,7 @@ import {Action} from "./Action";
 
 export function log(value: string): Action {
   return {
-    type: types.REDUX_ACTION,
+    type: types.ALERT,
     value,
   }
 }

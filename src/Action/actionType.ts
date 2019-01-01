@@ -1,1 +1,1 @@
-export const REDUX_ACTION: string = 'actions/redux_action';
+export const ALERT: string = 'actions/alert';
