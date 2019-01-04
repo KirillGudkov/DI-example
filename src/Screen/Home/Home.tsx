@@ -1,15 +1,16 @@
 import React from 'react';
 import {View} from 'react-native';
 import {HomePresenter} from "../../Presenter/HomePresenter";
-import BaseComponent from "../../Component/BaseComponent";
 import {PROFILE} from "../../Navigation/routeName";
 import {HomeView} from "../../View/HomeView";
 import {style} from "./style";
 import {connect} from "react-redux";
 import IOSButton from "../../Component/iOSButton/IOSButton";
 import {bind, inject, viewProperty} from "mvp-di";
+import {DefaultProps} from "../../Config/DefaultProps";
+import {DefaultState} from "../../Config/DefaultState";
 
-class Home extends BaseComponent implements HomeView {
+class Home extends React.PureComponent<DefaultProps, DefaultState> implements HomeView {
 
   @inject
   presenter!: HomePresenter;
