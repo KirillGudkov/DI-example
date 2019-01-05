@@ -1,8 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {Util} from "../../Util";
 import {Theme} from "../../MobX/Theme";
 import {style} from "./style";
+import {TextView} from "../../TextView";
 
 interface Props {
   title: string,
@@ -16,9 +17,9 @@ export class SettingsTitle extends React.Component<Props, {}> {
     const {backgroundColor, color} = theme;
     return (
       <View style={[style.container, {backgroundColor: Util.shadeColor(backgroundColor, -4)}]}>
-        <Text style={[style.title, {color}]}>
+        <TextView style={[style.title, {color}]}>
           {title}
-        </Text>
+        </TextView>
       </View>
     )
   }

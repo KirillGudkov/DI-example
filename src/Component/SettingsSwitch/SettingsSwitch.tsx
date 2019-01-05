@@ -1,9 +1,10 @@
 import React, {ReactNode} from 'react';
-import {Text, View} from "react-native";
+import {View} from "react-native";
 import {Switch} from "react-native";
 import {Theme} from "../../MobX/Theme";
 import {DarkTheme} from "../../MobX/DarkTheme";
 import {style} from "./style";
+import {TextView} from "../../TextView";
 
 interface Props {
   title: string,
@@ -20,7 +21,7 @@ export class SettingsSwitch extends React.Component<Props, {}> {
 
     return (
       <View style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
-        <Text style={[style.title, {color}]}>{title}</Text>
+        <TextView style={[style.title, {color}]}>{title}</TextView>
         <Switch trackColor={trackColor} value={value} onValueChange={onValueChange} />
       </View>
     )

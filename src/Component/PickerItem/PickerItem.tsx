@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image, Text, TouchableHighlight, View} from 'react-native';
+import {Image, TouchableHighlight, View} from 'react-native';
 import {Theme} from "../../MobX/Theme";
 import {style} from "./style";
+import {TextView} from "../../TextView";
 
 interface Props {
   item: {
@@ -25,9 +26,9 @@ export class PickerItem extends React.Component<Props, {}> {
         onPress={() => onSelect(section, item.value)}
         style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
         <View style={style.containerInner}>
-          <Text style={[style.title, {color}]}>
+          <TextView style={[style.title, {color}]}>
             {item.name}
-          </Text>
+          </TextView>
           {selected && <Image source={{uri: 'ic_done'}} style={[style.icon, {tintColor: color}]} />}
         </View>
       </TouchableHighlight>

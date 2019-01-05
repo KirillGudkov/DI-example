@@ -1,8 +1,9 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {style} from "./style";
 import {observer} from "mobx-react";
 import {Theme} from "../../MobX/Theme";
+import {TextView} from "../../TextView";
 
 interface Props {
   title: string,
@@ -20,7 +21,7 @@ export default class IOSButton extends React.Component<Props> {
         <TouchableOpacity
           style={[style.container, {backgroundColor: theme.accentColor, borderColor: theme.accentColor}]}
           onPress={onPress}>
-          <Text style={[style.title, {color: 'white'}]}>{title}</Text>
+          <TextView style={[style.title, {color: 'white'}]}>{title}</TextView>
         </TouchableOpacity>
       )
     } else {
@@ -28,7 +29,7 @@ export default class IOSButton extends React.Component<Props> {
         <TouchableOpacity
           style={[style.container, {borderColor: theme.accentColor}]}
           onPress={onPress}>
-          <Text style={[style.title, {color: theme.accentColor}]}>{title}</Text>
+          <TextView style={[style.title, {color: theme.accentColor}]}>{title}</TextView>
         </TouchableOpacity>
       )
     }

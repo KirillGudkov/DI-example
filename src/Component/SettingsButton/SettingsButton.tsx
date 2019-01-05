@@ -1,9 +1,10 @@
 import React, {ReactNode} from 'react';
-import {Text, Image, TouchableHighlight, View} from 'react-native';
+import {Image, TouchableHighlight, View} from 'react-native';
 import {Util} from "../../Util";
 import {Theme} from "../../MobX/Theme";
 import {DarkTheme} from "../../MobX/DarkTheme";
 import {style} from "./style";
+import {TextView} from "../../TextView";
 
 interface Props {
   title: string,
@@ -21,7 +22,7 @@ export class SettingsButton extends React.Component<Props, {}> {
     return (
       <TouchableHighlight underlayColor={borderColor} onPress={onPress} style={containerStyle}>
         <View style={style.containerInner}>
-          <Text style={[style.title, {color}]}>{title}</Text>
+          <TextView style={[style.title, {color}]}>{title}</TextView>
           <Image source={{uri: 'ic_chevron_right'}} style={[style.icon, {tintColor: chevronColor}]} />
         </View>
       </TouchableHighlight>

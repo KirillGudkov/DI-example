@@ -14,8 +14,7 @@ export class AppContainer extends React.PureComponent<Props, {}> {
     const {backgroundColor} = theme;
     return (
       <View style={[style.container, {backgroundColor: backgroundColor}]}>
-        <ScrollView contentContainerStyle={{flex: 1, alignItems: 'center'}}
-                    style={{width: '100%'}}>
+        <ScrollView contentContainerStyle={style.ccs} style={style.scroll}>
           {children}
         </ScrollView>
       </View>
@@ -27,5 +26,12 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-  }
+  },
+  ccs: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  scroll: {
+    width: '100%'
+  },
 });
