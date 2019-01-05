@@ -14,7 +14,7 @@ export class DarkTheme extends Theme {
   protected accentColorList = [
     {name: 'Red', value: '#ff343f'},
     {name: 'Coral', value: '#2ab9ad'},
-    {name: 'Purple', value: '#cd31ef'}
+    {name: 'Purple', value: '#ac42ef'}
   ];
 
   protected backgroundColorList = [
