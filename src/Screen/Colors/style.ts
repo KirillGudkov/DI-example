@@ -7,6 +7,7 @@ export const style = StyleSheet.create({
     alignItems: 'center',
   },
   sc: {
+    height: 30,
     width: '94%'
   },
   section: {

@@ -13,14 +13,14 @@ export class DarkTheme extends Theme {
 
   protected accentColorList = [
     {name: 'Red', value: '#ff343f'},
-    {name: 'Coral', value: '#28b2a6'},
-    {name: 'Purple', value: '#bb4aef'}
+    {name: 'Coral', value: '#2ab9ad'},
+    {name: 'Purple', value: '#cd31ef'}
   ];
 
   protected backgroundColorList = [
     {name: 'Dark Grey', value: '#2b2b2b'},
-    {name: 'Black', value: '#151515'},
-    {name: 'Dark Blue', value: '#011729'}
+    {name: 'Black', value: '#0d0d0d'},
+    {name: 'Dark Blue', value: '#021621'}
   ];
 
   public colors = {

@@ -18,7 +18,7 @@ const Navigator: NavigationContainer = createStackNavigator(
           headerTitleStyle: {
             color: screenProps.color
           },
-          headerTitle: screens.HOME
+          headerTitle: 'React Native SandBox'
         }
       }
     },

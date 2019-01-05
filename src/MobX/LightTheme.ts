@@ -13,7 +13,7 @@ export class LightTheme extends Theme {
 
   protected accentColorList = [
     {name: 'Blue', value: '#007aff'},
-    {name: 'Light Blue', value: '#08b7ff'},
+    {name: 'Orange', value: '#ff862f'},
     {name: 'Pink', value: '#ff63d0'}
   ];
 

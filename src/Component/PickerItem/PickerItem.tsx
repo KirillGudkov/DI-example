@@ -3,6 +3,7 @@ import {Image, TouchableHighlight, View} from 'react-native';
 import {Theme} from "../../MobX/Theme";
 import {style} from "./style";
 import {TextView} from "../../TextView";
+import {Util} from "../../Util";
 
 interface Props {
   item: {
@@ -19,10 +20,10 @@ export class PickerItem extends React.Component<Props, {}> {
 
   render() {
     const {theme, item, section, onSelect, selected} = this.props;
-    const {color, borderColor} = theme;
+    const {color, borderColor, backgroundColor} = theme;
     return (
       <TouchableHighlight
-        underlayColor={borderColor}
+        underlayColor={Util.shadeColor(backgroundColor, -10)}
         onPress={() => onSelect(section, item.value)}
         style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
         <View style={style.containerInner}>

@@ -26,9 +26,7 @@ export default class IOSButton extends React.Component<Props> {
       )
     } else {
       return (
-        <TouchableOpacity
-          style={[style.container, {borderColor: theme.accentColor}]}
-          onPress={onPress}>
+        <TouchableOpacity style={[style.container, {borderColor: theme.accentColor}]} onPress={onPress}>
           <TextView style={[style.title, {color: theme.accentColor}]}>{title}</TextView>
         </TouchableOpacity>
       )

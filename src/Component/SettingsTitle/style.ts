@@ -8,6 +8,6 @@ export const style = StyleSheet.create({
   },
   title: {
     opacity: 0.5,
-    fontSize: 16,
+    fontSize: 15,
   },
 });
