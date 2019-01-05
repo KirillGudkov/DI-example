@@ -14,6 +14,5 @@ export const style = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: '600'
   }
 });
