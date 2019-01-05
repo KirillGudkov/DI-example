@@ -11,4 +11,7 @@ export const style = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
+  margin: {
+    height: 16
+  },
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Util} from "../../Util";
 import {Theme} from "../../mobX/Theme";
+import {style} from "./style";
 
 interface Props {
   title: string,
@@ -22,15 +23,3 @@ export class SettingsTitle extends React.Component<Props, {}> {
     )
   }
 }
-
-const style = StyleSheet.create({
-  container: {
-    padding: 12,
-    justifyContent: 'center',
-    width: '100%'
-  },
-  title: {
-    opacity: 0.5,
-    fontSize: 16,
-  },
-});

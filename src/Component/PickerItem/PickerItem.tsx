@@ -1,6 +1,7 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {Image, Text, TouchableHighlight, View} from 'react-native';
 import {Theme} from "../../mobX/Theme";
+import {style} from "./style";
 
 interface Props {
   item: {
@@ -34,29 +35,3 @@ export class PickerItem extends React.Component<Props, {}> {
   }
 }
 
-const style = StyleSheet.create({
-  container: {
-    width: '100%',
-    alignItems: 'center',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderTopColor: '#f5f5f5',
-    borderBottomColor: '#f5f5f5',
-  },
-  containerInner: {
-    paddingHorizontal: 12,
-    paddingVertical: 16,
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: '600'
-  },
-  icon: {
-    width: 14,
-    height: 14,
-  }
-});

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {View} from 'react-native';
 import {SettingsPresenter} from "../../Presenter/SettingsPresenter";
 import {SettingsView} from "../../View/SettingsView";
 import {style} from './style';
-import IOSButton from "../../Component/iOSButton/IOSButton";
-import {bind, inject, viewProperty} from "mvp-di";
+import {bind, inject} from "mvp-di";
 import {DefaultProps} from "../../Config/DefaultProps";
 import {DefaultState} from "../../Config/DefaultState";
 import {observer} from 'mobx-react';
@@ -22,11 +21,8 @@ export default class Settings extends React.Component<DefaultProps, DefaultState
 
   @bind
   toggleDarkTheme(value: boolean): void {
-    if (value) {
-      this.props.screenProps.themeStore.setDarkThemeOn();
-    } else {
-      this.props.screenProps.themeStore.setDarkThemeOff();
-    }
+    const {setDarkThemeOn, setDarkThemeOff} = this.props.screenProps.themeStore;
+    value ? setDarkThemeOn() : setDarkThemeOff();
   }
 
   @bind
@@ -34,7 +30,7 @@ export default class Settings extends React.Component<DefaultProps, DefaultState
     this.props.navigation.navigate(COLORS);
   }
 
-  render() {
+  render(): ReactNode {
     const {theme} = this.props.screenProps.themeStore;
     return (
       <AppContainer theme={theme}>
@@ -43,7 +39,7 @@ export default class Settings extends React.Component<DefaultProps, DefaultState
           <SettingsSwitch title={'Dark theme'} theme={theme} onValueChange={this.toggleDarkTheme} />
           <SettingsButton title={'Colors'} theme={theme} onPress={this.next} />
         </View>
-        <View style={{height: 16}} />
+        <View style={style.margin} />
       </AppContainer>
     )
   }

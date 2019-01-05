@@ -1,20 +1,35 @@
+import {observable} from "mobx";
+
 export class Theme {
+
+  static sectionNames = {
+    accentColor: 'Accent color',
+    backgroundColor: 'Background color',
+  };
+
+  static themeNames = [
+    'Light theme', 'Dark theme'
+  ];
+
+  static cacheKeys = {
+    dark: 'dark',
+    light: 'light',
+    theme: 'theme'
+  };
+
   theme!: Theme;
 
-  protected colorList!: Array<any>;
+  protected accentColorList!: Array<any>;
+  protected backgroundColorList!: Array<any>;
+
+  @observable
+  public backgroundColor: string = this.theme ? this.theme.backgroundColor : this.backgroundColorList[0].value;
+  @observable
+  public accentColor: string = this.theme ? this.theme.accentColor : this.accentColorList[0].value;
 
   public colors!: any;
-  public backgroundColor!: string;
-  public accentColor!: string;
   public color!: string;
   public borderColor!: string;
-
-  public getAccentColorName(color: string) {
-    const result = this.colorList.find(item => item.value === color);
-    if (result) {
-      return result.name;
-    }
-  }
 
   public setAccentColor(color: string) {
     this.accentColor = color;

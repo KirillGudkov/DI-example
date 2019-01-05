@@ -1,8 +1,9 @@
-import React from 'react';
-import {StyleSheet, Text, View} from "react-native";
+import React, {ReactNode} from 'react';
+import {Text, View} from "react-native";
 import {Switch} from "react-native";
-import {DarkTheme} from "../../mobX/ThemeStore";
 import {Theme} from "../../mobX/Theme";
+import {DarkTheme} from "../../mobX/DarkTheme";
+import {style} from "./style";
 
 interface Props {
   title: string,
@@ -11,38 +12,17 @@ interface Props {
 }
 
 export class SettingsSwitch extends React.Component<Props, {}> {
-
-  render() {
+  render(): ReactNode {
     const {theme, title, onValueChange} = this.props;
     const {color, borderColor, accentColor} = theme;
+    const trackColor = {false: '#eee', true: accentColor};
+    const value = theme instanceof DarkTheme;
+
     return (
       <View style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
-        <Text style={[style.title, {color}]}>
-          {title}
-        </Text>
-        <Switch
-          trackColor={{false: '#eee', true: accentColor}}
-          value={theme instanceof DarkTheme}
-          onValueChange={onValueChange} />
+        <Text style={[style.title, {color}]}>{title}</Text>
+        <Switch trackColor={trackColor} value={value} onValueChange={onValueChange} />
       </View>
     )
   }
 }
-
-const style = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    padding: 12,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderTopColor: '#f5f5f5',
-    borderBottomColor: '#f5f5f5',
-    justifyContent: 'space-between'
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: '600'
-  }
-});

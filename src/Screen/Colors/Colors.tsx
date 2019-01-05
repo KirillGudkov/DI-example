@@ -1,5 +1,5 @@
-import React from 'react';
-import {SegmentedControlIOS, StyleSheet, View} from 'react-native';
+import React, {ReactNode} from 'react';
+import {SegmentedControlIOS, View} from 'react-native';
 import {observer} from "mobx-react";
 import {AppContainer} from "../../Component/AppContainer";
 import {DefaultProps} from "../../Config/DefaultProps";
@@ -8,46 +8,46 @@ import {bind} from "mvp-di";
 import {Picker} from "../../Component/Picker";
 import {SettingsTitle} from "../../Component/SettingsTitle";
 import {Util} from "../../Util";
-import {DarkTheme} from "../../mobX/ThemeStore";
+import {DarkTheme} from "../../mobX/DarkTheme";
+import {style} from "./style";
+import {Theme} from "../../mobX/Theme";
 
 @observer
 export class Colors extends React.Component<DefaultProps, DefaultState> {
 
   @bind
-  handleOnValueChange(value: string) {
-    if (value === 'Light theme') {
-      this.props.screenProps.themeStore.setDarkThemeOff();
-    } else {
-      this.props.screenProps.themeStore.setDarkThemeOn();
-    }
+  handleOnValueChange(value: string): void {
+    const {setDarkThemeOff, setDarkThemeOn} = this.props.screenProps.themeStore;
+    value === Theme.themeNames[0] ? setDarkThemeOff() : setDarkThemeOn();
   }
 
   @bind
-  onSelect(section: string, color: string) {
+  onSelect(section: string, color: string): void {
     const {setAccentColor, setBackgroundColor} = this.props.screenProps.themeStore;
     switch (section) {
-      case 'Accent color':
+      case Theme.sectionNames.accentColor:
         setAccentColor(color);
         break;
-      case 'Background color':
+      case Theme.sectionNames.backgroundColor:
         setBackgroundColor(color);
         break;
     }
   }
 
   @bind
-  renderSection(section: string) {
-    const {theme} = this.props.screenProps.themeStore;
+  renderSection(section: string): ReactNode {
+    const {themeStore} = this.props.screenProps;
+    const {theme} = themeStore;
+    const selected = (theme as any)[Util.getKeyByValue(Theme.sectionNames, section)];
     return (
       <View key={section} style={style.section}>
         <SettingsTitle title={section.toUpperCase()} theme={theme} />
-        <Picker section={section} onSelect={this.onSelect} data={theme.colors[section]}
-                themeStore={this.props.screenProps.themeStore} />
+        <Picker selected={selected} section={section} onSelect={this.onSelect} data={theme.colors[section]} themeStore={themeStore} />
       </View>
     )
   }
 
-  render() {
+  render(): ReactNode {
     const {theme} = this.props.screenProps.themeStore;
     const {accentColor, backgroundColor} = theme;
     return (
@@ -58,24 +58,10 @@ export class Colors extends React.Component<DefaultProps, DefaultState> {
             tintColor={accentColor}
             onValueChange={this.handleOnValueChange}
             style={style.sc}
-            values={['Light theme', 'Dark theme']} />
+            values={Theme.themeNames} />
         </View>
         {Object.keys(theme.colors).map(this.renderSection)}
       </AppContainer>
     )
   }
 }
-
-const style = StyleSheet.create({
-  container: {
-    width: '100%',
-    paddingTop: 12,
-    alignItems: 'center',
-  },
-  sc: {
-    width: '94%'
-  },
-  section: {
-    width: '100%'
-  },
-});

@@ -5,8 +5,9 @@ import {store} from "./Config/reduxStoreConfig";
 import {AppNavigator} from "./Navigation/router";
 import DITypes from "./Config/DITypes";
 import {DIBuilder} from "mvp-di";
-import {LightTheme, ThemeStore, themeStore} from "./mobX/ThemeStore";
+import {ThemeStore, themeStore} from "./mobX/ThemeStore";
 import {observer} from "mobx-react";
+import {LightTheme} from "./mobX/LightTheme";
 
 DIBuilder.build(DITypes);
 

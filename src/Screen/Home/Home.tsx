@@ -34,7 +34,7 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
     const {theme} = this.props.screenProps.themeStore;
     return (
       <AppContainer theme={theme}>
-        <View style={{flex: 1, justifyContent: 'center',}}>
+        <View style={style.buttonContainer}>
           <IOSButton filled theme={theme} title={'Open settings'} onPress={this.presenter.handleOnPress} />
         </View>
         <View style={style.hiWrapper}>
@@ -45,8 +45,4 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
   }
 }
 
-function mapStateToProps() {
-  return {}
-}
-
-export default connect(mapStateToProps)(Home);
+export default connect(() => ({}))(Home);

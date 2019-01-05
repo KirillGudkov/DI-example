@@ -4,11 +4,9 @@ import {bind} from "mvp-di";
 import {PickerItem} from "../PickerItem";
 import {Theme} from "../../mobX/Theme";
 
-interface State {
-}
-
 interface Props {
   section: string,
+  selected: string,
   onSelect: (section: string, color: string) => void,
   themeStore: {
     theme: Theme,
@@ -24,18 +22,17 @@ interface Item {
   value: string
 }
 
-export class Picker extends React.Component<Props, State> {
+export class Picker extends React.Component<Props, {}> {
 
   @bind
   renderItem(item: Item) {
-    const {section} = this.props;
+    const {section, selected} = this.props;
     const {theme} = this.props.themeStore;
-    const selected = theme.accentColor === item.value;
     return (
       <PickerItem
         section={section}
         key={item.name}
-        selected={selected}
+        selected={selected === item.value}
         item={item}
         theme={theme}
         onSelect={this.props.onSelect} />
