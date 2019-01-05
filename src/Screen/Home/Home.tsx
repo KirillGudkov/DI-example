@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {HomePresenter} from "../../Presenter/HomePresenter";
-import {PROFILE} from "../../Navigation/routeName";
+import {SETTINGS} from "../../Navigation/routeName";
 import {HomeView} from "../../View/HomeView";
 import {style} from "./style";
 import {connect} from "react-redux";
@@ -27,14 +27,16 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
   @bind
   @viewProperty
   public toProfile(): void {
-    this.props.navigation.navigate(PROFILE);
+    this.props.navigation.navigate(SETTINGS);
   }
 
   render() {
     const {theme} = this.props.screenProps.themeStore;
     return (
       <AppContainer theme={theme}>
-        <IOSButton filled theme={theme} title={'Open settings'} onPress={this.presenter.handleOnPress} />
+        <View style={{flex: 1, justifyContent: 'center',}}>
+          <IOSButton filled theme={theme} title={'Open settings'} onPress={this.presenter.handleOnPress} />
+        </View>
         <View style={style.hiWrapper}>
           <IOSButton theme={theme} title={'Say hi'} onPress={this.presenter.sayHi} />
         </View>

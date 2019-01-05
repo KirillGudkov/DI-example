@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 import {Switch} from "react-native";
-import {DarkTheme, Theme} from "../../mobX/ThemeStore";
+import {DarkTheme} from "../../mobX/ThemeStore";
+import {Theme} from "../../mobX/Theme";
 
 interface Props {
   title: string,
@@ -9,17 +10,20 @@ interface Props {
   onValueChange: (value: boolean) => void
 }
 
-export class SettingsSwitch extends React.PureComponent<Props, {}> {
+export class SettingsSwitch extends React.Component<Props, {}> {
 
   render() {
     const {theme, title, onValueChange} = this.props;
-    const {color, borderColor} = theme;
+    const {color, borderColor, accentColor} = theme;
     return (
       <View style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
         <Text style={[style.title, {color}]}>
           {title}
         </Text>
-        <Switch value={theme instanceof DarkTheme} onValueChange={onValueChange} />
+        <Switch
+          trackColor={{false: '#eee', true: accentColor}}
+          value={theme instanceof DarkTheme}
+          onValueChange={onValueChange} />
       </View>
     )
   }

@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Theme} from "../../mobX/ThemeStore";
 import {Util} from "../../Util";
+import {Theme} from "../../mobX/Theme";
 
 interface Props {
   title: string,
   theme: Theme
 }
 
-export class SettingsTitle extends React.PureComponent<Props, {}> {
+export class SettingsTitle extends React.Component<Props, {}> {
 
   render() {
     const {title, theme} = this.props;

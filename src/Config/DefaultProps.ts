@@ -1,10 +1,12 @@
-import {Theme} from "../mobX/ThemeStore";
+import {Theme} from "../mobX/Theme";
 
 export interface DefaultProps {
   dispatch: Function,
   screenProps: {
     themeStore: {
-      theme: Theme
+      theme: Theme,
+      setAccentColor: Function,
+      setBackgroundColor: Function,
       setDarkThemeOn: Function,
       setDarkThemeOff: Function
     }

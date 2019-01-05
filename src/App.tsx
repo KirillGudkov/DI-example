@@ -18,11 +18,12 @@ interface Props {
 class Application extends React.Component<Props, {}> {
   render(): React.ReactNode {
     const {themeStore} = this.props;
+    const {color, backgroundColor, accentColor} = themeStore.theme;
     const barStyle = themeStore.theme instanceof LightTheme ? 'dark-content' : 'light-content';
     return (
       <Fragment>
         <StatusBar barStyle={barStyle} />
-        <AppNavigator screenProps={{themeStore: themeStore}} />
+        <AppNavigator screenProps={{themeStore: themeStore, color, backgroundColor, accentColor}} />
       </Fragment>
     )
   }

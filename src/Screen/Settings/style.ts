@@ -9,6 +9,6 @@ export const style = StyleSheet.create({
   },
   settingsItemWrapper: {
     flex: 1,
-    width: '100%'
+    width: '100%',
   },
 });

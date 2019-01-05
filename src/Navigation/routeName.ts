@@ -1,2 +1,3 @@
 export const HOME = 'Home';
-export const PROFILE = 'Settings';
+export const SETTINGS = 'Settings';
+export const COLORS = 'Colors';

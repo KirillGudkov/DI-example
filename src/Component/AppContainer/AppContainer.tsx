@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Theme} from "../../mobX/ThemeStore";
+import {Theme} from "../../mobX/Theme";
 
 interface Props {
   theme: Theme,
@@ -23,6 +23,5 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
   }
 });

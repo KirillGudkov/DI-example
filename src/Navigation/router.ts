@@ -3,6 +3,7 @@ import {createStackNavigator, NavigationContainer, createAppContainer} from 'rea
 import Home from "../Screen/Home/Home";
 import Settings from "../Screen/Settings/Settings";
 import {Util} from "../Util";
+import {Colors} from "../Screen/Colors";
 
 const Navigator: NavigationContainer = createStackNavigator(
   {
@@ -11,26 +12,43 @@ const Navigator: NavigationContainer = createStackNavigator(
       navigationOptions: ({screenProps}: any) => {
         return {
           headerStyle: {
-            backgroundColor: Util.shadeColor(screenProps.themeStore.theme.backgroundColor, 6),
+            headerTintColor: screenProps.themeStore.theme.accentColor,
+            backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
           headerTitleStyle: {
-            color: screenProps.themeStore.theme.color
+            color: screenProps.color
           },
-          headerTitle: 'Home'
+          headerTitle: screens.HOME
         }
       }
     },
-    [screens.PROFILE]: {
+    [screens.SETTINGS]: {
       screen: Settings,
       navigationOptions: ({screenProps}: any) => {
         return {
+          headerTintColor: screenProps.accentColor,
+          headerStyle: {
+            backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
+          },
+          headerTitleStyle: {
+            color: screenProps.color
+          },
+          headerTitle: screens.SETTINGS
+        }
+      }
+    },
+    [screens.COLORS]: {
+      screen: Colors,
+      navigationOptions: ({screenProps}: any) => {
+        return {
+          headerTintColor: screenProps.themeStore.theme.accentColor,
           headerStyle: {
             backgroundColor: Util.shadeColor(screenProps.themeStore.theme.backgroundColor, 6),
           },
           headerTitleStyle: {
             color: screenProps.themeStore.theme.color
           },
-          headerTitle: 'Settings'
+          headerTitle: screens.COLORS
         }
       }
     }

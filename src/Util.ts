@@ -1,5 +1,5 @@
 export class Util {
-  static shadeColor(color: string, percent: number): string {
+  static shadeColor(color: string = '#ffffff', percent: number): string {
     const formattedPercent = percent / 100;
     const f = parseInt(color.slice(1), 16);
     const t = formattedPercent < 0 ? 0 : 255;
