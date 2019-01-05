@@ -1,8 +1,8 @@
 import React, {ReactNode} from 'react';
 import {Text, View} from "react-native";
 import {Switch} from "react-native";
-import {Theme} from "../../mobX/Theme";
-import {DarkTheme} from "../../mobX/DarkTheme";
+import {Theme} from "../../MobX/Theme";
+import {DarkTheme} from "../../MobX/DarkTheme";
 import {style} from "./style";
 
 interface Props {

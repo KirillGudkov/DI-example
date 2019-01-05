@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {bind} from "mvp-di";
 import {PickerItem} from "../PickerItem";
-import {Theme} from "../../mobX/Theme";
+import {Theme} from "../../MobX/Theme";
 
 interface Props {
   section: string,

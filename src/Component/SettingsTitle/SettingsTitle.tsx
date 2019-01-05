@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Util} from "../../Util";
-import {Theme} from "../../mobX/Theme";
+import {Theme} from "../../MobX/Theme";
 import {style} from "./style";
 
 interface Props {

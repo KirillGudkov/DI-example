@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Theme} from "../../mobX/Theme";
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {Theme} from "../../MobX/Theme";
 
 interface Props {
   theme: Theme,
@@ -14,11 +14,15 @@ export class AppContainer extends React.PureComponent<Props, {}> {
     const {backgroundColor} = theme;
     return (
       <View style={[style.container, {backgroundColor: backgroundColor}]}>
-        {children}
+        <ScrollView contentContainerStyle={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+                    style={{width: '100%'}}>
+          {children}
+        </ScrollView>
       </View>
     )
   }
 }
+
 const style = StyleSheet.create({
   container: {
     flex: 1,

@@ -3,18 +3,13 @@ import {AsyncStorage} from "react-native";
 
 export class LightTheme extends Theme {
 
-  theme!: Theme;
-
   constructor() {
     super();
-    AsyncStorage.getItem(Theme.cacheKeys.light).then(value => {
-      if (value) {
-        this.theme = JSON.parse(value);
-        this.backgroundColor = this.theme.backgroundColor;
-        this.accentColor = this.theme.accentColor;
-      }
-    });
+    AsyncStorage.getItem(Theme.cacheKeys.light).then(this.setTheme);
   }
+
+  public color: string = '#333333';
+  public borderColor: string = '#f5f5f5';
 
   protected accentColorList = [
     {name: 'Blue', value: '#007aff'},
@@ -30,9 +25,6 @@ export class LightTheme extends Theme {
     [LightTheme.sectionNames.accentColor]: this.accentColorList,
     [LightTheme.sectionNames.backgroundColor]: this.backgroundColorList,
   };
-
-  public color: string = '#333333';
-  public borderColor: string = '#f5f5f5';
 
   public setBackgroundColor(color: string) {
     super.setBackgroundColor(color);

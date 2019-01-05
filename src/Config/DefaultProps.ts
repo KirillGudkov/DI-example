@@ -1,4 +1,4 @@
-import {Theme} from "../mobX/Theme";
+import {Theme} from "../MobX/Theme";
 
 export interface DefaultProps {
   dispatch: Function,

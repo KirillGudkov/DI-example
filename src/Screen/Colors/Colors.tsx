@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {SegmentedControlIOS, View} from 'react-native';
+import {SegmentedControlIOS, View, ScrollView} from 'react-native';
 import {observer} from "mobx-react";
 import {AppContainer} from "../../Component/AppContainer";
 import {DefaultProps} from "../../Config/DefaultProps";
@@ -8,9 +8,9 @@ import {bind} from "mvp-di";
 import {Picker} from "../../Component/Picker";
 import {SettingsTitle} from "../../Component/SettingsTitle";
 import {Util} from "../../Util";
-import {DarkTheme} from "../../mobX/DarkTheme";
+import {DarkTheme} from "../../MobX/DarkTheme";
 import {style} from "./style";
-import {Theme} from "../../mobX/Theme";
+import {Theme} from "../../MobX/Theme";
 
 @observer
 export class Colors extends React.Component<DefaultProps, DefaultState> {
@@ -42,7 +42,8 @@ export class Colors extends React.Component<DefaultProps, DefaultState> {
     return (
       <View key={section} style={style.section}>
         <SettingsTitle title={section.toUpperCase()} theme={theme} />
-        <Picker selected={selected} section={section} onSelect={this.onSelect} data={theme.colors[section]} themeStore={themeStore} />
+        <Picker selected={selected} section={section} onSelect={this.onSelect} data={theme.colors[section]}
+                themeStore={themeStore} />
       </View>
     )
   }

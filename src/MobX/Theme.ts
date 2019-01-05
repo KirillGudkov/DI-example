@@ -1,4 +1,5 @@
 import {observable} from "mobx";
+import {bind} from "mvp-di";
 
 export class Theme {
 
@@ -37,5 +38,14 @@ export class Theme {
 
   public setBackgroundColor(color: string) {
     this.backgroundColor = color;
+  }
+
+  @bind
+  protected setTheme(value: string | null) {
+    if (value) {
+      const theme = JSON.parse(value);
+      this.backgroundColor = theme.backgroundColor;
+      this.accentColor = theme.accentColor;
+    }
   }
 }

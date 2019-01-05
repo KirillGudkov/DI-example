@@ -5,14 +5,11 @@ export class DarkTheme extends Theme {
 
   constructor() {
     super();
-    AsyncStorage.getItem(Theme.cacheKeys.dark).then(value => {
-      if (value) {
-        const theme = JSON.parse(value);
-        this.backgroundColor = theme.backgroundColor;
-        this.accentColor = theme.accentColor;
-      }
-    });
+    AsyncStorage.getItem(Theme.cacheKeys.dark).then(this.setTheme);
   }
+
+  public color: string = '#e7e7e7';
+  public borderColor: string = '#393939';
 
   protected accentColorList = [
     {name: 'Red', value: '#ff343f'},
@@ -30,9 +27,6 @@ export class DarkTheme extends Theme {
     [DarkTheme.sectionNames.accentColor]: this.accentColorList,
     [DarkTheme.sectionNames.backgroundColor]: this.backgroundColorList,
   };
-
-  public color: string = '#e7e7e7';
-  public borderColor: string = '#393939';
 
   public setBackgroundColor(color: string) {
     super.setBackgroundColor(color);
