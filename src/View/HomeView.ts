@@ -1,4 +1,4 @@
 export interface HomeView {
-  toProfile: Function
+  toSettings: Function
   dispatch: Function
 }

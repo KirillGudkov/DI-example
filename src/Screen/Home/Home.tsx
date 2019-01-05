@@ -11,12 +11,24 @@ import {DefaultProps} from "../../Config/DefaultProps";
 import {DefaultState} from "../../Config/DefaultState";
 import {observer} from "mobx-react";
 import {AppContainer} from "../../Component/AppContainer";
+import {SettingsHeaderButton} from "../../Component/SettingsHeaderButton";
 
 @observer
 class Home extends React.Component<DefaultProps, DefaultState> implements HomeView {
 
+  static navigationOptions = ({navigation, screenProps}: any) => {
+    const {theme} = screenProps.themeStore;
+    return {
+      headerRight: <SettingsHeaderButton theme={theme} navigation={navigation} />
+    }
+  };
+
   @inject
   presenter!: HomePresenter;
+
+  componentDidMount() {
+    this.props.navigation.setParams({'onPress': this.toSettings});
+  }
 
   @bind
   @viewProperty
@@ -26,7 +38,7 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
 
   @bind
   @viewProperty
-  public toProfile(): void {
+  public toSettings(): void {
     this.props.navigation.navigate(SETTINGS);
   }
 
@@ -35,8 +47,6 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
     return (
       <AppContainer theme={theme}>
         <View style={style.buttonContainer}>
-          <IOSButton filled theme={theme} title={'Open settings'} onPress={this.presenter.handleOnPress} />
-          <View style={style.gape} />
           <IOSButton theme={theme} title={'Say hi'} onPress={this.presenter.sayHi} />
         </View>
       </AppContainer>

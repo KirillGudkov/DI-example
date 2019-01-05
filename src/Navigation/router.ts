@@ -56,3 +56,22 @@ const Navigator: NavigationContainer = createStackNavigator(
 );
 
 export const AppNavigator: NavigationContainer = createAppContainer(Navigator);
+
+// TabBar example
+//
+//     [screens.HOME]: {
+//       screen: Home,
+//       navigationOptions: (args: any) => {
+//         const {accentColor, backgroundColor} = args.screenProps.themeStore.theme;
+//         const bg = Util.shadeColor(backgroundColor, 6);
+//         return {
+//           header: null,
+//           tabBarOptions: {
+//             activeTintColor: accentColor,
+//             activeBackgroundColor: bg,
+//             inactiveBackgroundColor: bg
+//           },
+//           tabBarIcon: (args: any) => <Image style={[style.icon, {tintColor: args.focused ? args.tintColor : '#888'}]} source={{uri: 'ic_home'}} />,
+//       }
+//       }
+//     },
