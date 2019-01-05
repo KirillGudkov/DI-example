@@ -1,21 +1,22 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import {style} from "./style";
+import {Theme} from "../../mobX/ThemeStore";
 
 interface Props {
   title: string,
   onPress: () => void,
-  tintColor: string,
+  theme: Theme,
   filled?: boolean
 }
 
 export default class IOSButton extends React.PureComponent<Props> {
   render() {
-    const {filled, tintColor, onPress, title} = this.props;
+    const {filled, theme, onPress, title} = this.props;
     if (filled) {
       return (
         <TouchableOpacity
-          style={[style.container, {backgroundColor: tintColor, borderColor: tintColor}]}
+          style={[style.container, {backgroundColor: theme.tintColor, borderColor: theme.tintColor}]}
           onPress={onPress}>
           <Text style={[style.title, {color: 'white'}]}>{title}</Text>
         </TouchableOpacity>
@@ -23,9 +24,9 @@ export default class IOSButton extends React.PureComponent<Props> {
     } else {
       return (
         <TouchableOpacity
-          style={[style.container, {borderColor: tintColor}]}
+          style={[style.container, {borderColor: theme.tintColor}]}
           onPress={onPress}>
-          <Text style={[style.title, {color: tintColor}]}>{title}</Text>
+          <Text style={[style.title, {color: theme.tintColor}]}>{title}</Text>
         </TouchableOpacity>
       )
     }

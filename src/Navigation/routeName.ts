@@ -1,2 +1,2 @@
 export const HOME = 'Home';
-export const PROFILE = 'Profile';
+export const PROFILE = 'Settings';

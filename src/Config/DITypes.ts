@@ -1,7 +1,7 @@
 import { HomePresenter } from "../Presenter/HomePresenter";
-import {ProfilePresenter} from "../Presenter/ProfilePresenter";
+import {SettingsPresenter} from "../Presenter/SettingsPresenter";
 
 export default {
   'Home': HomePresenter,
-  'Profile': ProfilePresenter,
+  'Settings': SettingsPresenter,
 }

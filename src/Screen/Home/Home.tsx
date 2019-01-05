@@ -9,8 +9,11 @@ import IOSButton from "../../Component/iOSButton/IOSButton";
 import {bind, inject, viewProperty} from "mvp-di";
 import {DefaultProps} from "../../Config/DefaultProps";
 import {DefaultState} from "../../Config/DefaultState";
+import {observer} from "mobx-react";
+import {AppContainer} from "../../Component/AppContainer";
 
-class Home extends React.PureComponent<DefaultProps, DefaultState> implements HomeView {
+@observer
+class Home extends React.Component<DefaultProps, DefaultState> implements HomeView {
 
   @inject
   presenter!: HomePresenter;
@@ -28,13 +31,14 @@ class Home extends React.PureComponent<DefaultProps, DefaultState> implements Ho
   }
 
   render() {
+    const {theme} = this.props.screenProps.themeStore;
     return (
-      <View style={style.container}>
-        <IOSButton filled tintColor={'#007aff'} title={'Open profile'} onPress={this.presenter.handleOnPress} />
+      <AppContainer theme={theme}>
+        <IOSButton filled theme={theme} title={'Open settings'} onPress={this.presenter.handleOnPress} />
         <View style={style.hiWrapper}>
-          <IOSButton tintColor={'#007aff'} title={'Say hi'} onPress={this.presenter.sayHi} />
+          <IOSButton theme={theme} title={'Say hi'} onPress={this.presenter.sayHi} />
         </View>
-      </View>
+      </AppContainer>
     )
   }
 }

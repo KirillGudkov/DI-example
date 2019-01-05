@@ -1,22 +1,40 @@
 import * as screens from './routeName';
 import {createStackNavigator, NavigationContainer, createAppContainer} from 'react-navigation';
 import Home from "../Screen/Home/Home";
-import Profile from "../Screen/Profile/Profile";
+import Settings from "../Screen/Settings/Settings";
+import {Util} from "../Util";
 
 const Navigator: NavigationContainer = createStackNavigator(
   {
     [screens.HOME]: {
       screen: Home,
-      navigationOptions: {
-        headerTitle: 'Home',
+      navigationOptions: ({screenProps}: any) => {
+        return {
+          headerStyle: {
+            backgroundColor: Util.shadeColor(screenProps.themeStore.theme.backgroundColor, 6),
+          },
+          headerTitleStyle: {
+            color: screenProps.themeStore.theme.color
+          },
+          headerTitle: 'Home'
+        }
       }
     },
     [screens.PROFILE]: {
-      screen: Profile,
-      navigationOptions: {
-        headerTitle: 'Profile'
+      screen: Settings,
+      navigationOptions: ({screenProps}: any) => {
+        return {
+          headerStyle: {
+            backgroundColor: Util.shadeColor(screenProps.themeStore.theme.backgroundColor, 6),
+          },
+          headerTitleStyle: {
+            color: screenProps.themeStore.theme.color
+          },
+          headerTitle: 'Settings'
+        }
       }
     }
   }
 );
+
 export const AppNavigator: NavigationContainer = createAppContainer(Navigator);
