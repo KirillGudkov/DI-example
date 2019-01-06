@@ -33,7 +33,8 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
   @bind
   @viewProperty
   public dispatch(action: Function): void {
-    this.props.dispatch(action);
+    this.props.screenProps.showNotification();
+    // this.props.dispatch(action);
   }
 
   @bind
@@ -47,7 +48,7 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
     return (
       <AppContainer theme={theme}>
         <View style={style.buttonContainer}>
-          <IOSButton theme={theme} title={'Say hi'} onPress={this.presenter.sayHi} />
+          <IOSButton filled theme={theme} title={'Say hi'} onPress={this.presenter.sayHi} />
         </View>
       </AppContainer>
     )

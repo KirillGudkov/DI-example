@@ -7,5 +7,5 @@ export const style = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     justifyContent: 'center'
-  },
+  }
 });

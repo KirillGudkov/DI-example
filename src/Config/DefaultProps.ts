@@ -3,6 +3,7 @@ import {Theme} from "../MobX/Theme";
 export interface DefaultProps {
   dispatch: Function,
   screenProps: {
+    showNotification: Function,
     themeStore: {
       theme: Theme,
       setAccentColor: Function,
