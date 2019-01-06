@@ -1,113 +1,102 @@
-import React from 'react';
-import {Animated, StyleSheet, View} from 'react-native';
+import React, {ReactNode} from 'react';
+import {Animated, Dimensions, View, Text} from 'react-native';
+import {PanGestureHandler, PanGestureHandlerGestureEvent} from 'react-native-gesture-handler';
 import {BlurView} from "react-native-blur";
-import {TextView} from "../../TextView";
-import {Theme} from "../../MobX/Theme";
-import {PanGestureHandler, PanGestureHandlerGestureEvent, State} from 'react-native-gesture-handler';
-import {observer} from "mobx-react";
 import {bind} from "mvp-di";
+import {style} from "./style";
 
 interface Props {
+  blurType?: 'xlight' | 'light' | 'dark',
+  duration: number,
+  autohide: boolean,
+  blurAmount?: number,
   text?: string,
-  theme: {
-    theme: Theme,
-    color: string,
-    backgroundColor: string,
-    accentColor: string
-  }
+  textColor?: string,
+  customComponent?: ReactNode
 }
 
-@observer
 export class Notification extends React.Component<Props, {}> {
 
-  private translateY = new Animated.Value(-300);
+  static defaultProps = {
+    blurAmount: 7,
+    duration: 2000,
+    autohide: true
+  };
 
-  public showNotification() {
-    Animated.timing(this.translateY, {
+  private translateY = new Animated.Value(-300);
+  private offset: number = isIphoneX() ? 42 : 22;
+  private viewHeight: number = 0;
+
+  @bind
+  public showNotification(): void {
+    const {autohide, duration} = this.props;
+    Animated.spring(this.translateY, {
       toValue: 0,
-      duration: 300,
+      useNativeDriver: true
+    }).start();
+    if (autohide) {
+      setTimeout(this.hideNotification, duration);
+    }
+  }
+
+  @bind
+  public hideNotification(): void {
+    Animated.spring(this.translateY, {
+      toValue: (this.viewHeight + this.offset) * -1,
       useNativeDriver: true
     }).start();
   }
 
   @bind
-  private onGestureEvent(event: PanGestureHandlerGestureEvent) {
+  private onGestureEvent(event: PanGestureHandlerGestureEvent): void {
     if (event.nativeEvent.translationY > 0) {
-      this.translateY.setValue(event.nativeEvent.translationY / 5)
+      this.translateY.setValue(event.nativeEvent.translationY / 5);
     } else if (event.nativeEvent.translationY < 0) {
-      this.translateY.setValue(event.nativeEvent.translationY)
+      this.translateY.setValue(event.nativeEvent.translationY);
     }
   }
 
   @bind
-  private onHandlerStateChange(event: PanGestureHandlerGestureEvent) {
+  private onHandlerStateChange(event: PanGestureHandlerGestureEvent): void {
     if (event.nativeEvent.translationY > 0) {
-      Animated.timing(this.translateY, {
-        toValue: 0,
-        duration: 150,
-        useNativeDriver: true
-      }).start();
+      this.showNotification();
     } else {
-      Animated.timing(this.translateY, {
-        toValue: -300,
-        duration: 250,
-        useNativeDriver: true
-      }).start();
+      this.hideNotification();
     }
   };
 
-  render() {
-    const {color} = this.props.theme;
+  @bind
+  private handleOnLayout(event: any): void {
+    this.viewHeight = event.nativeEvent.layout.height;
+  }
+
+  private renderCustomComponent(): ReactNode {
+    return this.props.customComponent;
+  }
+
+  private renderOwnComponent(): ReactNode {
+    const {textColor, text} = this.props;
+    return <Text style={[style.text, {color: textColor}]}>{text}</Text>;
+  }
+
+  render(): ReactNode {
+    const {textColor, customComponent, blurAmount, blurType = 'light'} = this.props;
+    const animatedStyle = [style.notification, {top: this.offset, transform: [{translateY: this.translateY}]}];
     return (
       <PanGestureHandler onHandlerStateChange={this.onHandlerStateChange} onGestureEvent={this.onGestureEvent}>
-        <Animated.View style={[style.notification, {transform: [{translateY: this.translateY}]}]}>
-          <BlurView style={style.absolute} blurType={'light'} blurAmount={10} />
-          <TextView style={[style.text, {color: color}]}>
-            {this.props.text}
-          </TextView>
-          <View style={[style.knob, {backgroundColor: color,}]} />
+        <Animated.View onLayout={this.handleOnLayout} style={animatedStyle}>
+          <BlurView style={style.absolute} blurType={blurType} blurAmount={blurAmount} />
+          <View style={style.content}>
+            {customComponent ? this.renderCustomComponent() : this.renderOwnComponent()}
+          </View>
+          <View style={[style.knob, {backgroundColor: textColor}]} />
         </Animated.View>
       </PanGestureHandler>
     )
   }
 }
 
-const style = StyleSheet.create({
-  notification: {
-    width: '95%',
-    shadowColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    top: 22,
-    zIndex: 2,
-    elevation: 2,
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    borderRadius: 12,
-    position: 'absolute',
-    alignSelf: 'center'
-  },
-  text: {
-    fontSize: 16,
-    margin: 14,
-    bottom: -6,
-  },
-  knob: {
-    width: 50,
-    height: 4,
-    backgroundColor: '#ffffff',
-    opacity: 0.5,
-    borderRadius: 4,
-    marginBottom: 6
-  },
-  absolute: {
-    position: "absolute",
-    width: '100%',
-    height: '100%',
-    borderRadius: 12,
-  },
-});
+function isIphoneX() {
+  const {height, width} = Dimensions.get('window');
+  return (height / width) > 2.163;
+}

@@ -1,4 +1,4 @@
-import React, {Fragment, ReactNode} from 'react'
+import React, {Fragment} from 'react'
 import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from "./Config/reduxStoreConfig";
@@ -38,15 +38,8 @@ class Application extends React.Component<Props, {}> {
     return (
       <Fragment>
         <StatusBar barStyle={barStyle} />
-        <AppNavigator screenProps={{
-          themeStore: themeStore,
-          color,
-          backgroundColor,
-          accentColor,
-          showNotification: this.showNotification
-        }} />
-        <Notification text={'Hey, whats up?'} ref={this.createRef}
-                      theme={{color, backgroundColor, accentColor, theme: themeStore.theme}} />
+        <AppNavigator screenProps={{themeStore: themeStore, color, backgroundColor, accentColor, showNotification: this.showNotification}} />
+        <Notification text={'Hey, whats up?'} ref={this.createRef} textColor={color} />
       </Fragment>
     )
   }

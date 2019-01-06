@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 import {human} from 'react-native-typography'
 
 interface Props {
-  style: Object,
+  style?: Object,
   children: ReactNode
 }
 

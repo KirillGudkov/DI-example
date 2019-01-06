@@ -1,4 +1,4 @@
 export interface HomeView {
   toSettings: Function
-  dispatch: Function
+  showNotification: Function
 }

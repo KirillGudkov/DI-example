@@ -32,9 +32,8 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
 
   @bind
   @viewProperty
-  public dispatch(action: Function): void {
+  public showNotification(): void {
     this.props.screenProps.showNotification();
-    // this.props.dispatch(action);
   }
 
   @bind
