@@ -4,6 +4,7 @@ export interface DefaultProps {
   dispatch: Function,
   screenProps: {
     showNotification: Function,
+    showCustom: Function,
     themeStore: {
       theme: Theme,
       setAccentColor: Function,

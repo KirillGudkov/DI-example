@@ -12,7 +12,7 @@ const Navigator: NavigationContainer = createStackNavigator(
       navigationOptions: ({screenProps}: any) => {
         return {
           headerStyle: {
-            headerTintColor: screenProps.themeStore.theme.accentColor,
+            headerTintColor: screenProps.accentColor,
             backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
           headerTitleStyle: {
@@ -41,12 +41,12 @@ const Navigator: NavigationContainer = createStackNavigator(
       screen: Colors,
       navigationOptions: ({screenProps}: any) => {
         return {
-          headerTintColor: screenProps.themeStore.theme.accentColor,
+          headerTintColor: screenProps.accentColor,
           headerStyle: {
-            backgroundColor: Util.shadeColor(screenProps.themeStore.theme.backgroundColor, 6),
+            backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
           headerTitleStyle: {
-            color: screenProps.themeStore.theme.color
+            color: screenProps.color
           },
           headerTitle: screens.COLORS
         }

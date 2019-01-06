@@ -47,7 +47,7 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
     return (
       <AppContainer theme={theme}>
         <View style={style.buttonContainer}>
-          <IOSButton filled theme={theme} title={'Say hi'} onPress={this.presenter.sayHi} />
+          <IOSButton filled theme={theme} title={'Show me Tony'} onPress={this.presenter.sayHi} />
         </View>
       </AppContainer>
     )
