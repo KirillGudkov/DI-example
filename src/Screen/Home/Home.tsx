@@ -32,12 +32,6 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
 
   @bind
   @viewProperty
-  public showNotification(): void {
-    this.props.screenProps.showNotification();
-  }
-
-  @bind
-  @viewProperty
   public toSettings(): void {
     this.props.navigation.navigate(SETTINGS);
   }

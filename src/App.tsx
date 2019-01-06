@@ -22,23 +22,6 @@ interface Props {
 @observer
 class Application extends React.Component<Props, {}> {
 
-  notification!: Notification;
-
-  @bind
-  showNotification() {
-    this.notification.show();
-  }
-
-  @bind
-  hideNotification() {
-    this.notification.hide();
-  }
-
-  @bind
-  private createRef(node: Notification) {
-    this.notification = node
-  }
-
   private renderCustomNotification(color: string) {
     return (
       <View style={style.notificationContainer}>
@@ -57,11 +40,10 @@ class Application extends React.Component<Props, {}> {
     return (
       <Fragment>
         <StatusBar barStyle={barStyle} />
-        <AppNavigator screenProps={{themeStore, color, backgroundColor, accentColor, showNotification: this.showNotification}} />
+        <AppNavigator screenProps={{themeStore, color, backgroundColor, accentColor}} />
         <Notification
-          onPress={this.hideNotification}
+          onPress={() => Notification.hide()}
           autohide={false}
-          ref={this.createRef}
           textColor={color}
           customComponent={this.renderCustomNotification(color)} />
       </Fragment>
