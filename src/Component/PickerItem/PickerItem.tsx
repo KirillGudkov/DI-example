@@ -25,7 +25,7 @@ export class PickerItem extends React.Component<Props, {}> {
       <TouchableHighlight
         underlayColor={Util.shadeColor(backgroundColor, -10)}
         onPress={() => onSelect(section, item.value)}
-        style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
+        style={[style.container, { borderBottomColor: borderColor}]}>
         <View style={style.containerInner}>
           <TextView style={[style.title, {color}]}>
             {item.name}

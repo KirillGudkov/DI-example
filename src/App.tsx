@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {Image, StatusBar, StyleSheet, Animated, TouchableOpacity, View} from 'react-native';
+import {StatusBar, StyleSheet, Animated} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from "./Config/reduxStoreConfig";
 import {AppNavigator} from "./Navigation/router";
@@ -10,7 +10,13 @@ import {observer} from "mobx-react";
 import {LightTheme} from "./MobX/LightTheme";
 import {Notification} from "react-native-in-app-message";
 import {TextView} from "./TextView";
-import {BlurView} from "react-native-blur";
+import {
+  ForceTouchGestureHandlerGestureEvent,
+  ForceTouchGestureHandlerStateChangeEvent,
+  State
+} from "react-native-gesture-handler";
+import {NavigationContainer} from "react-navigation";
+import {SHOW_NOTIFICATION} from "./Navigation/routeName";
 
 DIBuilder.build(DITypes);
 
@@ -23,34 +29,45 @@ interface Props {
 @observer
 class Application extends React.Component<Props, {}> {
 
+  force = new Animated.Value(0);
+
+  navigation!: NavigationContainer;
 
   @bind
-  onOkPress() {
-
+  onPress() {
+    Notification.hide();
+    (this.navigation as any)._navigation.navigate(SHOW_NOTIFICATION, {
+      image: avatar.uri,
+      title: 'Iron Man'
+    });
   }
+
+  onForceTouchStateChange = (event: ForceTouchGestureHandlerStateChangeEvent) => {
+    if (event.nativeEvent.oldState === State.ACTIVE) {
+      this.force.setValue(0);
+    }
+  };
+
+  @bind
+  onForceTouch(event: ForceTouchGestureHandlerGestureEvent) {
+    const {force} = event.nativeEvent;
+    Animated.timing(this.force, {
+      toValue: force,
+      duration: 0,
+    }).start();
+  };
 
   private renderCustomNotification(color: string) {
     return (
-      <View style={style.notification}>
-        <View style={style.notificationContainer}>
-          <Image resizeMethod={'resize'} source={avatar} style={style.avatar} />
-          <View style={style.textContainer}>
-            <TextView style={{color: color, fontWeight: '600'}}>Iron Man</TextView>
-            <TextView style={{color: color, fontSize: 14}}>Iron Man (Anthony Edward "Tony" Stark) is a fictional superhero appearing in American comic books published by Marvel Comics.</TextView>
-          </View>
-        </View>
-        <View style={style.buttonsContainer}>
-          <BlurView style={style.leftButtonBlur} blurAmount={10} blurType={'light'} />
-          <TouchableOpacity onPress={() => Notification.hide()} style={style.button}>
-            <TextView style={{color, fontSize: 15}}>Close</TextView>
-          </TouchableOpacity>
-          <View style={[style.buttonDivider, {backgroundColor: color}]} />
-          <BlurView style={style.rightButtonBlur} blurAmount={10} blurType={'light'} />
-          <TouchableOpacity onPress={this.onOkPress} style={style.button}>
-            <TextView style={{color, fontSize: 15}}>Read more</TextView>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Animated.View style={style.notification}>
+        <Animated.View style={style.textContainer}>
+          <TextView style={{color: color, fontWeight: '600'}}>Iron Man</TextView>
+          <TextView style={{color: color, fontSize: 14}}>
+            Iron Man (Anthony Edward "Tony" Stark) is a fictional superhero appearing in American comic books
+            published by Marvel Comics.
+          </TextView>
+        </Animated.View>
+      </Animated.View>
     )
   }
 
@@ -61,10 +78,21 @@ class Application extends React.Component<Props, {}> {
     return (
       <Fragment>
         <StatusBar barStyle={barStyle} />
-        <AppNavigator screenProps={{themeStore, color, backgroundColor, accentColor}} />
+        <AppNavigator ref={(node: any) => this.navigation = node}
+                      screenProps={{themeStore, color, backgroundColor, accentColor}} />
         <Notification
-          showKnob={false}
-          onPress={() => Notification.hide()}
+          style={{
+            transform: [{
+              scale: this.force.interpolate({
+                inputRange: [0, 1],
+                outputRange: [1, 1.03],
+              })
+            }]
+          }}
+          onPress={this.onPress}
+          useForceTouch={true}
+          onForceTouchGestureEvent={this.onForceTouch}
+          onForceTouchHandlerStateChange={this.onForceTouchStateChange}
           autohide={false}
           textColor={color}
           customComponent={this.renderCustomNotification(color)} />
@@ -74,22 +102,9 @@ class Application extends React.Component<Props, {}> {
 }
 
 const style = StyleSheet.create({
-  notificationContainer: {
-    flex: 1,
-    width: '100%',
-    marginHorizontal: 12,
-    alignItems: 'center'
-  },
-  buttonsContainer: {
-    flex: 1,
-    marginHorizontal: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 10,
-    width: '100%'
-  },
   notification: {
     borderRadius: 12,
+    marginHorizontal: 12,
     overflow: 'hidden',
     width: '100%',
     alignItems: 'center',
@@ -103,37 +118,11 @@ const style = StyleSheet.create({
   },
   textContainer: {
     width: '100%',
-    paddingHorizontal: 8,
+    paddingVertical: 32,
+    paddingHorizontal: 12,
     marginTop: 12,
     marginLeft: 8
-  },
-  leftButtonBlur: {
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
-    width: '50%',
-    height: '100%',
-    opacity: 0.3,
-  },
-  rightButtonBlur: {
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    width: '50%',
-    height: '100%',
-    opacity: 0.3,
-  },
-  button: {
-    flex: 1,
-    height: 36,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonDivider: {
-    width: 1,
-    height: 20,
-    opacity: 0.3
-  },
+  }
 });
 
 const _App = () => (

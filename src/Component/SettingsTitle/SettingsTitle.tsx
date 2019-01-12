@@ -14,11 +14,11 @@ export class SettingsTitle extends React.Component<Props, {}> {
 
   render() {
     const {title, theme} = this.props;
-    const {backgroundColor, color} = theme;
+    const {backgroundColor, borderColor, color} = theme;
     return (
-      <View style={[style.container, {backgroundColor: Util.shadeColor(backgroundColor, -4)}]}>
+      <View style={[style.container, {borderBottomColor: borderColor, backgroundColor: Util.shadeColor(backgroundColor, -4)}]}>
         <TextView style={[style.title, {color}]}>
-          {title}
+          {title.toUpperCase()}
         </TextView>
       </View>
     )

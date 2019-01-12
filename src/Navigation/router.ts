@@ -4,6 +4,8 @@ import Home from "../Screen/Home/Home";
 import Settings from "../Screen/Settings/Settings";
 import {Util} from "../Util";
 import {Colors} from "../Screen/Colors";
+import {ShowNotification} from "../Screen/ShowNotification";
+import {human} from 'react-native-typography'
 
 const Navigator: NavigationContainer = createStackNavigator(
   {
@@ -15,10 +17,24 @@ const Navigator: NavigationContainer = createStackNavigator(
             headerTintColor: screenProps.accentColor,
             backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
-          headerTitleStyle: {
-            color: screenProps.color
+          headerTitleStyle: [human.headline, {
+            color: screenProps.color,
+          }],
+          headerTitle: screens.HOME
+        }
+      }
+    },
+    [screens.SHOW_NOTIFICATION]: {
+      screen: ShowNotification,
+      navigationOptions: ({screenProps}: any) => {
+        return {
+          headerTintColor: screenProps.accentColor,
+          headerStyle: {
+            backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
-          headerTitle: 'React Native SandBox'
+          headerTitleStyle: [human.headline, {
+            color: screenProps.color,
+          }],
         }
       }
     },
@@ -30,12 +46,12 @@ const Navigator: NavigationContainer = createStackNavigator(
           headerStyle: {
             backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
-          headerTitleStyle: {
-            color: screenProps.color
-          },
-          headerTitle: screens.SETTINGS
+          headerTitleStyle: [human.headline, {
+            color: screenProps.color,
+          }],
+          headerTitle: screens.SETTINGS,
         }
-      }
+      },
     },
     [screens.COLORS]: {
       screen: Colors,
@@ -45,9 +61,9 @@ const Navigator: NavigationContainer = createStackNavigator(
           headerStyle: {
             backgroundColor: Util.shadeColor(screenProps.backgroundColor, 6),
           },
-          headerTitleStyle: {
-            color: screenProps.color
-          },
+          headerTitleStyle: [human.headline, {
+            color: screenProps.color,
+          }],
           headerTitle: screens.COLORS
         }
       }

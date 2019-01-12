@@ -1,4 +1,5 @@
 import {Theme} from "./Theme";
+import { iOSColors } from 'react-native-typography'
 import {AsyncStorage} from "react-native";
 
 export class LightTheme extends Theme {
@@ -12,9 +13,12 @@ export class LightTheme extends Theme {
   public borderColor: string = '#f5f5f5';
 
   protected accentColorList = [
-    {name: 'Blue', value: '#007aff'},
-    {name: 'Orange', value: '#ff862f'},
-    {name: 'Pink', value: '#ff63d0'}
+    {name: 'Red', value: iOSColors.red},
+    {name: 'Blue', value: iOSColors.blue},
+    {name: 'Teal Blue', value: iOSColors.tealBlue},
+    {name: 'Green', value: iOSColors.green},
+    {name: 'Orange', value: iOSColors.orange},
+    {name: 'Pink', value: iOSColors.pink}
   ];
 
   protected backgroundColorList = [

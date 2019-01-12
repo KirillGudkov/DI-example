@@ -1,22 +1,23 @@
 import React, {ReactNode} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {NativeScrollEvent, NativeSyntheticEvent, Animated, StyleSheet, View} from 'react-native';
 import {Theme} from "../../MobX/Theme";
 
 interface Props {
   theme: Theme,
-  children: ReactNode
+  children: ReactNode,
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
 }
 
 export class AppContainer extends React.PureComponent<Props, {}> {
 
   render() {
-    const {children, theme} = this.props;
+    const {children, theme, onScroll} = this.props;
     const {backgroundColor} = theme;
     return (
       <View style={[style.container, {backgroundColor: backgroundColor}]}>
-        <ScrollView contentContainerStyle={style.ccs} style={style.scroll}>
+        <Animated.ScrollView scrollEventThrottle={1} onScroll={onScroll} contentContainerStyle={style.ccs} style={style.scroll}>
           {children}
-        </ScrollView>
+        </Animated.ScrollView>
       </View>
     )
   }
@@ -24,14 +25,15 @@ export class AppContainer extends React.PureComponent<Props, {}> {
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
   },
   ccs: {
-    flex: 1,
     alignItems: 'center'
   },
   scroll: {
-    width: '100%'
+    width: '100%',
+    height: '100%',
   },
 });

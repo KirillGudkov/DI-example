@@ -20,7 +20,7 @@ export class SettingsSwitch extends React.Component<Props, {}> {
     const value = theme instanceof DarkTheme;
 
     return (
-      <View style={[style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}]}>
+      <View style={[style.container, { borderBottomColor: borderColor}]}>
         <TextView style={[style.title, {color}]}>{title}</TextView>
         <Switch trackColor={trackColor} value={value} onValueChange={onValueChange} />
       </View>

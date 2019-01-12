@@ -17,7 +17,7 @@ export class SettingsButton extends React.Component<Props, {}> {
     const {theme, title, onPress} = this.props;
     const {color, borderColor, backgroundColor} = theme;
     const chevronColor = theme instanceof DarkTheme ? Util.shadeColor(borderColor, 20) : Util.shadeColor(borderColor, -20);
-    const containerStyle = [style.container, {borderTopColor: borderColor, borderBottomColor: borderColor}];
+    const containerStyle = [style.container, { borderBottomColor: borderColor}];
 
     return (
       <TouchableHighlight underlayColor={Util.shadeColor(backgroundColor, -10)} onPress={onPress} style={containerStyle}>

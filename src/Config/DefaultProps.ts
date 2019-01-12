@@ -16,6 +16,7 @@ export interface DefaultProps {
   navigation: {
     navigate: Function,
     goBack: Function,
-    setParams: Function
+    setParams: Function,
+    getParam: Function
   }
 }

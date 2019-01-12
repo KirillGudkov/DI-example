@@ -4,7 +4,8 @@ export const style = StyleSheet.create({
   container: {
     padding: 12,
     justifyContent: 'center',
-    width: '100%'
+    width: '100%',
+    borderBottomWidth: 1
   },
   title: {
     opacity: 0.5,
