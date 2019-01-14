@@ -5,7 +5,12 @@ import {Notification} from "react-native-in-app-message";
 export class HomePresenter extends Presenter<HomeView>{
 
   @bind
-  sayHi() {
+  showMessage() {
     Notification.show();
+  }
+
+  @bind
+  toSettings() {
+    this.view.toSettings();
   }
 }

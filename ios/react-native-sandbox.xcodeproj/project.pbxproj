@@ -21,9 +21,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		3C96C85921ECFD1A001547B1 /* libBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C96C85721ECE7B9001547B1 /* libBlur.a */; };
 		68079B6F9F82443AAB93DA16 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D46EAABAA584BFF9C99A130 /* libRNGestureHandler.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		ABCA720700CC4CE79076B199 /* libBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A5830423F64C578102DA8F /* libBlur.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
 
@@ -168,9 +168,9 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNGestureHandler;
 		};
-		3CDE035421EBF0F2003D9D15 /* PBXContainerItemProxy */ = {
+		3C96C85621ECE7B9001547B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D74D9021DD4744CFB514C7EB /* Blur.xcodeproj */;
+			containerPortal = 3B21772AC9B049B299D8B658 /* Blur.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3CDE030421EBEB21003D9D15;
 			remoteInfo = Blur;
@@ -324,14 +324,13 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DI/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		47A5830423F64C578102DA8F /* libBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBlur.a; sourceTree = "<group>"; };
-		5A8DE8F1D690404AAD38F5E1 /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
+		3B21772AC9B049B299D8B658 /* Blur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Blur.xcodeproj; path = "../node_modules/react-native-in-app-message/src/Blur/ios/Blur.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6C86A565FB88490F82389103 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
+		77ECBB12D47C422A84936346 /* libBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBlur.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		D74D9021DD4744CFB514C7EB /* Blur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Blur.xcodeproj; path = "../node_modules/react-native-in-app-message/src/Blur/ios/Blur.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +338,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C96C85921ECFD1A001547B1 /* libBlur.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -352,7 +352,6 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				68079B6F9F82443AAB93DA16 /* libRNGestureHandler.a in Frameworks */,
-				ABCA720700CC4CE79076B199 /* libBlur.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,8 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				0D46EAABAA584BFF9C99A130 /* libRNGestureHandler.a */,
-				5A8DE8F1D690404AAD38F5E1 /* libRNBlur.a */,
-				47A5830423F64C578102DA8F /* libBlur.a */,
+				77ECBB12D47C422A84936346 /* libBlur.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -501,10 +499,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3CDE035121EBF0F2003D9D15 /* Products */ = {
+		3C96C85321ECE7B8001547B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CDE035521EBF0F2003D9D15 /* libBlur.a */,
+				3C96C85721ECE7B9001547B1 /* libBlur.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -543,7 +541,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				6C86A565FB88490F82389103 /* RNGestureHandler.xcodeproj */,
-				D74D9021DD4744CFB514C7EB /* Blur.xcodeproj */,
+				3B21772AC9B049B299D8B658 /* Blur.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -637,8 +635,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3CDE035121EBF0F2003D9D15 /* Products */;
-					ProjectRef = D74D9021DD4744CFB514C7EB /* Blur.xcodeproj */;
+					ProductGroup = 3C96C85321ECE7B8001547B1 /* Products */;
+					ProjectRef = 3B21772AC9B049B299D8B658 /* Blur.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -841,11 +839,11 @@
 			remoteRef = 3C4F3C6F21D6BCED00DEE742 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3CDE035521EBF0F2003D9D15 /* libBlur.a */ = {
+		3C96C85721ECE7B9001547B1 /* libBlur.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libBlur.a;
-			remoteRef = 3CDE035421EBF0F2003D9D15 /* PBXContainerItemProxy */;
+			remoteRef = 3C96C85621ECE7B9001547B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -1001,7 +999,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1040,15 +1038,14 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+					"$(SRCROOT)/../node_modules/react-native-in-app-message/src/Blur/ios/Blur/**",
 					"$(SRCROOT)/../node_modules/react-native-in-app-message/src/Blur/ios/Blur",
 				);
 				INFOPLIST_FILE = DI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/react-native-sandbox\"",
-					"\"$(SRCROOT)/react-native-sandbox\"",
+					"\"$(SRCROOT)/react-native-sandbox\"/**",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1070,15 +1067,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-message/src/Blur/ios/Blur",
 				);
 				INFOPLIST_FILE = DI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/react-native-sandbox\"",
-					"\"$(SRCROOT)/react-native-sandbox\"",
+					"\"$(SRCROOT)/react-native-sandbox\"/**",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

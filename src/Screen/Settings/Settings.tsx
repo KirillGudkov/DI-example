@@ -6,14 +6,12 @@ import {style} from './style';
 import {bind, inject} from "mvp-di";
 import {DefaultProps} from "../../Config/DefaultProps";
 import {DefaultState} from "../../Config/DefaultState";
-import {observer} from 'mobx-react';
 import {SettingsTitle} from "../../Component/SettingsTitle";
 import {SettingsSwitch} from "../../Component/SettingsSwitch";
 import {AppContainer} from "../../Component/AppContainer";
 import {SettingsButton} from "../../Component/SettingsButton";
 import {COLORS} from "../../Navigation/routeName";
 
-@observer
 export default class Settings extends React.Component<DefaultProps, DefaultState> implements SettingsView {
 
   @inject

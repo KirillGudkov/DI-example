@@ -6,14 +6,14 @@ import {connect} from "react-redux";
 import {bind, inject, viewProperty} from "mvp-di";
 import {DefaultProps} from "../../Config/DefaultProps";
 import {DefaultState} from "../../Config/DefaultState";
-import {observer} from "mobx-react";
 import {AppContainer} from "../../Component/AppContainer";
 import {SettingsHeaderButton} from "../../Component/SettingsHeaderButton";
 import {SettingsButton} from "../../Component/SettingsButton";
-import {Util} from "../../Util";
 
-@observer
 class Home extends React.Component<DefaultProps, DefaultState> implements HomeView {
+
+  @inject
+  presenter!: HomePresenter;
 
   static navigationOptions = ({navigation, screenProps}: any) => {
     const {theme} = screenProps.themeStore;
@@ -21,9 +21,6 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
       headerRight: <SettingsHeaderButton theme={theme} navigation={navigation} />
     }
   };
-
-  @inject
-  presenter!: HomePresenter;
 
   componentDidMount() {
     this.props.navigation.setParams({'onPress': this.toSettings});
@@ -39,8 +36,8 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
     const {theme} = this.props.screenProps.themeStore;
     return (
       <AppContainer theme={theme}>
-        <SettingsButton title={'Show notification'} theme={theme} onPress={this.presenter.sayHi} />
-        <SettingsButton title={'Open settings'} theme={theme} onPress={this.toSettings} />
+        <SettingsButton title={'Show notification'} theme={theme} onPress={this.presenter.showMessage} />
+        <SettingsButton title={'Open settings'} theme={theme} onPress={this.presenter.toSettings} />
       </AppContainer>
     )
   }

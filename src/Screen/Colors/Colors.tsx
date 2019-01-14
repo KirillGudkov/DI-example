@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {SegmentedControlIOS, View, ScrollView} from 'react-native';
+import {SegmentedControlIOS, View} from 'react-native';
 import {observer} from "mobx-react";
 import {AppContainer} from "../../Component/AppContainer";
 import {DefaultProps} from "../../Config/DefaultProps";
