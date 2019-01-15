@@ -9,6 +9,7 @@ import {DefaultState} from "../../Config/DefaultState";
 import {AppContainer} from "../../Component/AppContainer";
 import {SettingsHeaderButton} from "../../Component/SettingsHeaderButton";
 import {SettingsButton} from "../../Component/SettingsButton";
+import {Notification, TapticFeedback} from "react-native-in-app-message";
 
 class Home extends React.Component<DefaultProps, DefaultState> implements HomeView {
 
@@ -29,6 +30,7 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
   @bind
   @viewProperty
   public toSettings(): void {
+    TapticFeedback.fire();
     this.props.navigation.navigate(SETTINGS);
   }
 
@@ -36,8 +38,8 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
     const {theme} = this.props.screenProps.themeStore;
     return (
       <AppContainer theme={theme}>
-        <SettingsButton title={'Show notification'} theme={theme} onPress={this.presenter.showMessage} />
-        <SettingsButton title={'Open settings'} theme={theme} onPress={this.presenter.toSettings} />
+        <SettingsButton title={'Show notification'} theme={theme} onPress={() => Notification.show()} />
+        <SettingsButton title={'Open settings'} theme={theme} onPress={this.toSettings} />
       </AppContainer>
     )
   }

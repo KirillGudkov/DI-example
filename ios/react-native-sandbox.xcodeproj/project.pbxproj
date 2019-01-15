@@ -21,8 +21,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		3C96C85921ECFD1A001547B1 /* libBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C96C85721ECE7B9001547B1 /* libBlur.a */; };
+		3CDFEAEE21EE7477006504ED /* libRNInAppMessage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDFEAED21EE746B006504ED /* libRNInAppMessage.a */; };
 		68079B6F9F82443AAB93DA16 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D46EAABAA584BFF9C99A130 /* libRNGestureHandler.a */; };
+		7B363257DAF04F5ABB8ACAEF /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8891AC9AB3564E06BF763E1D /* libRNReactNativeHapticFeedback.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
@@ -168,12 +169,19 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNGestureHandler;
 		};
-		3C96C85621ECE7B9001547B1 /* PBXContainerItemProxy */ = {
+		3CDFEAE421EE37D1006504ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3B21772AC9B049B299D8B658 /* Blur.xcodeproj */;
+			containerPortal = 4F2B8024732348059C280E2C /* RNReactNativeHapticFeedback.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNReactNativeHapticFeedback;
+		};
+		3CDFEAEC21EE746B006504ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CDFEAE821EE746B006504ED /* RNInAppMessage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3CDE030421EBEB21003D9D15;
-			remoteInfo = Blur;
+			remoteInfo = RNInAppMessage;
 		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -324,12 +332,14 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DI/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B21772AC9B049B299D8B658 /* Blur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Blur.xcodeproj; path = "../node_modules/react-native-in-app-message/src/Blur/ios/Blur.xcodeproj"; sourceTree = "<group>"; };
+		3CDFEAE821EE746B006504ED /* RNInAppMessage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNInAppMessage.xcodeproj; path = "../node_modules/react-native-in-app-message/src/RNInAppMessage/ios/RNInAppMessage.xcodeproj"; sourceTree = "<group>"; };
+		4F2B8024732348059C280E2C /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6C86A565FB88490F82389103 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
-		77ECBB12D47C422A84936346 /* libBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBlur.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8891AC9AB3564E06BF763E1D /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = "<group>"; };
+		8BE6583B3952416FAF3CB887 /* libBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBlur.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,7 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C96C85921ECFD1A001547B1 /* libBlur.a in Frameworks */,
+				3CDFEAEE21EE7477006504ED /* libRNInAppMessage.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -352,6 +362,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				68079B6F9F82443AAB93DA16 /* libRNGestureHandler.a in Frameworks */,
+				7B363257DAF04F5ABB8ACAEF /* libRNReactNativeHapticFeedback.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +497,8 @@
 			isa = PBXGroup;
 			children = (
 				0D46EAABAA584BFF9C99A130 /* libRNGestureHandler.a */,
-				77ECBB12D47C422A84936346 /* libBlur.a */,
+				8BE6583B3952416FAF3CB887 /* libBlur.a */,
+				8891AC9AB3564E06BF763E1D /* libRNReactNativeHapticFeedback.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -499,10 +511,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3C96C85321ECE7B8001547B1 /* Products */ = {
+		3CDFEAE121EE37D0006504ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3C96C85721ECE7B9001547B1 /* libBlur.a */,
+				3CDFEAE521EE37D1006504ED /* libRNReactNativeHapticFeedback.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CDFEAE921EE746B006504ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CDFEAED21EE746B006504ED /* libRNInAppMessage.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -528,6 +548,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3CDFEAE821EE746B006504ED /* RNInAppMessage.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -541,7 +562,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				6C86A565FB88490F82389103 /* RNGestureHandler.xcodeproj */,
-				3B21772AC9B049B299D8B658 /* Blur.xcodeproj */,
+				4F2B8024732348059C280E2C /* RNReactNativeHapticFeedback.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -635,10 +656,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3C96C85321ECE7B8001547B1 /* Products */;
-					ProjectRef = 3B21772AC9B049B299D8B658 /* Blur.xcodeproj */;
-				},
-				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -689,6 +706,14 @@
 				{
 					ProductGroup = 3C4F3C6C21D6BCED00DEE742 /* Products */;
 					ProjectRef = 6C86A565FB88490F82389103 /* RNGestureHandler.xcodeproj */;
+				},
+				{
+					ProductGroup = 3CDFEAE921EE746B006504ED /* Products */;
+					ProjectRef = 3CDFEAE821EE746B006504ED /* RNInAppMessage.xcodeproj */;
+				},
+				{
+					ProductGroup = 3CDFEAE121EE37D0006504ED /* Products */;
+					ProjectRef = 4F2B8024732348059C280E2C /* RNReactNativeHapticFeedback.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -839,11 +864,18 @@
 			remoteRef = 3C4F3C6F21D6BCED00DEE742 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3C96C85721ECE7B9001547B1 /* libBlur.a */ = {
+		3CDFEAE521EE37D1006504ED /* libRNReactNativeHapticFeedback.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libBlur.a;
-			remoteRef = 3C96C85621ECE7B9001547B1 /* PBXContainerItemProxy */;
+			path = libRNReactNativeHapticFeedback.a;
+			remoteRef = 3CDFEAE421EE37D1006504ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3CDFEAED21EE746B006504ED /* libRNInAppMessage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNInAppMessage.a;
+			remoteRef = 3CDFEAEC21EE746B006504ED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -1040,12 +1072,15 @@
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-in-app-message/src/Blur/ios/Blur/**",
 					"$(SRCROOT)/../node_modules/react-native-in-app-message/src/Blur/ios/Blur",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = DI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/react-native-sandbox\"/**",
+					"\"$(SRCROOT)/react-native-sandbox\"",
+					"\"$(SRCROOT)/react-native-sandbox\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1068,12 +1103,15 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-in-app-message/src/Blur/ios/Blur",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = DI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/react-native-sandbox\"/**",
+					"\"$(SRCROOT)/react-native-sandbox\"",
+					"\"$(SRCROOT)/react-native-sandbox\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

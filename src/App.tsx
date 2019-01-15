@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {StatusBar, StyleSheet, Animated, Image, TextInput, View, KeyboardAvoidingView} from 'react-native';
+import {StatusBar, StyleSheet, Animated, Image, TextInput, View, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from "./Config/reduxStoreConfig";
 import {AppNavigator} from "./Navigation/router";
@@ -7,16 +7,12 @@ import {bind} from "mvp-di";
 import {ThemeStore, themeStore} from "./MobX/ThemeStore";
 import {observer} from "mobx-react";
 import {LightTheme} from "./MobX/LightTheme";
-import {Notification} from "react-native-in-app-message";
+import {Blur, Notification} from "react-native-in-app-message";
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import {TextView} from "./TextView";
-import {
-  ForceTouchGestureHandlerGestureEvent,
-  ForceTouchGestureHandlerStateChangeEvent,
-  State
-} from "react-native-gesture-handler";
+import {ForceTouchGestureHandlerGestureEvent, ForceTouchGestureHandlerStateChangeEvent, State} from "react-native-gesture-handler";
 import {NavigationContainer} from "react-navigation";
 import {SHOW_NOTIFICATION} from "./Navigation/routeName";
-import {Blur} from "react-native-in-app-message/src/Blur";
 import {Util} from "./Util";
 import {DarkTheme} from "./MobX/DarkTheme";
 
@@ -31,13 +27,14 @@ interface Props {
 class Application extends React.Component<Props, {}> {
 
   force = new Animated.Value(0);
-  input = new Animated.Value(0);
 
   state = {
     isForced: false
   };
 
   navigation!: NavigationContainer;
+
+  inputView!: TextInput;
 
   @bind
   onPress() {
@@ -66,11 +63,8 @@ class Application extends React.Component<Props, {}> {
 
       if (force === 1) {
         this.setState({isForced: true});
-        Animated.timing(this.input, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true
-        }).start(() => this.inputView.focus());
+        ReactNativeHapticFeedback.trigger('impactHeavy', true);
+        this.inputView.focus();
       }
     }
   };
@@ -79,11 +73,11 @@ class Application extends React.Component<Props, {}> {
   private onBlur() {
     this.setState({isForced: false});
     Notification.hide();
-    Animated.timing(this.input, {
-      toValue: 0,
-      duration: 200,
-      useNativeDriver: true
-    }).start();
+  }
+
+  @bind
+  private onHide() {
+    this.inputView.blur();
     Animated.timing(this.force, {
       toValue: 0,
       duration: 200,
@@ -115,21 +109,29 @@ class Application extends React.Component<Props, {}> {
         <AppNavigator ref={(node: any) => this.navigation = node}
                       screenProps={{themeStore, color, backgroundColor, accentColor}} />
         <Animated.View pointerEvents={'none'} style={{position: 'absolute', width: '100%', height: '100%', opacity: this.force}}>
-          <Blur blurAmount={2} blurType={themeStore.theme instanceof DarkTheme ? 'dark' : 'light'} style={{width: '100%', height: '100%'}}/>
+          <Blur blurAmount={5} blurType={themeStore.theme instanceof DarkTheme ? 'dark' : 'light'} style={{width: '100%', height: '100%'}}/>
         </Animated.View>
-        <AnimatedKeyboardView keyboardVerticalOffset={20} style={{position: 'absolute', left: 0, right: 0, bottom: 0, opacity: this.input}} behavior="position">
+        <AnimatedKeyboardView keyboardVerticalOffset={20} style={{position: 'absolute', left: 0, right: 0, bottom: 0, opacity: this.force.interpolate({
+            inputRange: [0.8 ,1],
+            outputRange: [0, 1]
+          })}} behavior="position">
         <View style={{width: '100%', shadowColor: '#000',
+          flexDirection: 'row',
           shadowOffset: {
             width: 0,
             height: 2,
           },
           shadowOpacity: 0.2,
           shadowRadius: 7, padding: 10, backgroundColor: Util.shadeColor(backgroundColor, 10),alignItems: 'center', justifyContent: 'center'}}>
-          <TextInput keyboardAppearance={themeStore.theme instanceof DarkTheme ? 'dark' : 'light'} onBlur={this.onBlur} ref={node => this.inputView = node} returnKeyLabel={'Reply'} placeholderTextColor={'#999'} placeholder={'Reply...'} style={{paddingHorizontal: 12, color: color, height: 34, width: '100%', borderRadius: 8, borderWidth: 1, backgroundColor: Util.shadeColor(backgroundColor, 15), borderColor: borderColor}}/>
+          <TextInput keyboardAppearance={themeStore.theme instanceof DarkTheme ? 'dark' : 'light'} onBlur={this.onBlur} ref={(node: any) => this.inputView = node} returnKeyLabel={'Reply'} placeholderTextColor={'#999'} placeholder={'Reply...'} style={{paddingHorizontal: 12, color: color, height: 34, flex: 1, borderRadius: 8, borderWidth: 1, backgroundColor: Util.shadeColor(backgroundColor, 15), borderColor: borderColor}}/>
+          <TouchableOpacity style={{width: 60, paddingVertical: 8,alignItems: 'center',justifyContent: 'center'}}>
+            <TextView style={{color: accentColor}}>Reply</TextView>
+          </TouchableOpacity>
         </View>
         </AnimatedKeyboardView>
         <Notification
           style={{
+            borderRadius: 17,
             transform: [{
               translateY: this.force.interpolate({
                 inputRange: [0, 1],
@@ -142,6 +144,8 @@ class Application extends React.Component<Props, {}> {
               })
             }]
           }}
+          tapticFeedback={true}
+          onHide={this.onHide}
           onPress={this.onPress}
           useForceTouch={!this.state.isForced}
           onForceTouchGestureEvent={this.onForceTouch}
