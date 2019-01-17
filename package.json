@@ -16,7 +16,7 @@
     "react-native-create-bridge": "^2.0.1",
     "react-native-gesture-handler": "1.0.12",
     "react-native-haptic-feedback": "^1.4.2",
-    "react-native-in-app-message": "/Users/kirillgudkov/WebstormProjects/react-native-in-app-message",
+    "react-native-in-app-message": "github:KirillGudkov/react-native-in-app-message#master",
     "react-native-typography": "^1.4.0",
     "react-navigation": "3.0.9",
     "react-redux": "6.0.0",

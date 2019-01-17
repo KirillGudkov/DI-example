@@ -30,7 +30,7 @@ class Home extends React.Component<DefaultProps, DefaultState> implements HomeVi
   @bind
   @viewProperty
   public toSettings(): void {
-    TapticFeedback.fire();
+    TapticFeedback.impact();
     this.props.navigation.navigate(SETTINGS);
   }
 
