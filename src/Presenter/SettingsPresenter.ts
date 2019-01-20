@@ -1,4 +1,4 @@
 import {SettingsView} from "../View/SettingsView";
-import {bind, Presenter} from "mvp-di";
+import {Presenter} from "mvp-di";
 
 export class SettingsPresenter extends Presenter<SettingsView> {}

@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {SettingsPresenter} from "../../Presenter/SettingsPresenter";
 import {SettingsView} from "../../View/SettingsView";
 import {style} from './style';
-import {bind, inject} from "mvp-di";
 import {DefaultProps} from "../../Config/DefaultProps";
 import {DefaultState} from "../../Config/DefaultState";
 import {SettingsTitle} from "../../Component/SettingsTitle";
@@ -11,11 +10,17 @@ import {SettingsSwitch} from "../../Component/SettingsSwitch";
 import {AppContainer} from "../../Component/AppContainer";
 import {SettingsButton} from "../../Component/SettingsButton";
 import {COLORS} from "../../Navigation/routeName";
+import {Component} from "../../Config/DITypes";
+import {bind, inject} from "mvp-di";
 
 export default class Settings extends React.Component<DefaultProps, DefaultState> implements SettingsView {
 
   @inject
-  presenter!: SettingsPresenter;
+  private presenter!: SettingsPresenter;
+
+  public getClassName() {
+    return Component.SETTINGS
+  }
 
   @bind
   toggleDarkTheme(value: boolean): void {
